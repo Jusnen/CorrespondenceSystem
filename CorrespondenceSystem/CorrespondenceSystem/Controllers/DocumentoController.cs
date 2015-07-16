@@ -9,10 +9,24 @@ namespace CorrespondenceSystem.Controllers
     public class DocumentoController : Controller
     {
         //
-        // GET: /Documento/
+        //GET: /Documento/
         public ActionResult Index()
         {
-            return View();
+            return View("VerDocumentos");
         }
+
+        //
+        public ActionResult verDocumentos()
+        {
+            return View("VerDocumentos");
+        }
+
+        //GET: /Documento/Nuevo
+        public ActionResult Nuevo()
+        {
+
+            return View("RegistrarDocumentoNuevo");
+        }
+
 	}
 }

@@ -23,6 +23,9 @@
     <!-- Custom Fonts -->
     <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
 
+
+
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -250,7 +253,7 @@
         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
         </li>
         <li class="divider"></li>
-        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+        <li><a href="/Login/"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
         </li>
     </ul>
     <!-- /.dropdown-user -->
@@ -266,10 +269,10 @@
                 <a href="/">Inicio</a>
             </li>
             <li>
-                <a href="#"><i class="fa fa-file-o fa-fw"></i>Documentos<span class="fa arrow"></span></a>
+                <a href="/Documento/"><i class="fa fa-file-o fa-fw"></i>Documentos</a><span class="fa arrow"></span>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="flot.html">Nuevo Documento</a>
+                        <a href="/Documento/Nuevo">Nuevo Documento</a>
                     </li>
                     <li>
                         <a href="morris.html">Morris.js Charts</a>
@@ -344,7 +347,7 @@
                         <a class="active" href="blank.html">Blank Page</a>
                     </li>
                     <li>
-                        <a href="login.html">Login Page</a>
+                        <a href="/Login/">Login Page</a>
                     </li>
                 </ul>
                 <!-- /.nav-second-level -->
@@ -361,11 +364,13 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Blank</h1>
+                <h1 class="page-header">@ViewBag.Title</h1>
             </div>
             <!-- /.col-lg-12 -->
         </div>
-        @RenderBody();
+        <div class="jumbotron">
+            @RenderBody()
+        </div>
         <!-- /.row -->
     </div>
     <!-- /.container-fluid -->
@@ -376,7 +381,13 @@
 <!-- /#wrapper -->
 
 <!-- jQuery -->
-<script src="~/Scripts/jquery-2.1.4.min.js"></script>
+
+<script src="~/Scripts/jquery-2.1.4.js"></script>
+
+
+
+
+
 
 <!-- Bootstrap Core JavaScript -->
 <script src="~/Scripts/bootstrap.min.js"></script>
@@ -386,7 +397,7 @@
 
 <!-- Custom Theme JavaScript -->
 <script src="~/Scripts/sb-admin-2.js"></script>
-@RenderSection("scripts", required: false)
+@*@RenderSection("scripts", required: false)*@
 </body>
 
 </html>
