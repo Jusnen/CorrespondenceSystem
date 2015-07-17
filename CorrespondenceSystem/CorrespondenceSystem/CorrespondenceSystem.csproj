@@ -199,6 +199,7 @@
     <Content Include="Views\Home\RegistrarDocumentoNuevo.cshtml" />
     <Content Include="Views\Documento\RegistrarDocumentoNuevo.cshtml" />
     <Content Include="Views\Documento\VerDocumentos.cshtml" />
+    <Content Include="Views\Documento\RegistrarDocumentoSalida.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

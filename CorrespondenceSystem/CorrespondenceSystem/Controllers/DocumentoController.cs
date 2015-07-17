@@ -10,22 +10,31 @@ namespace CorrespondenceSystem.Controllers
     {
         //
         //GET: /Documento/
+        [HttpGet]
         public ActionResult Index()
         {
             return View("VerDocumentos");
         }
 
         //
-        public ActionResult verDocumentos()
+        [HttpGet]
+        public ActionResult VerDocumentos()
         {
             return View("VerDocumentos");
         }
 
         //GET: /Documento/Nuevo
+        [HttpGet]
         public ActionResult Nuevo()
         {
 
             return View("RegistrarDocumentoNuevo");
+        }
+
+        [HttpGet]
+        public ActionResult Salida()
+        {
+            return View("RegistrarDocumentoSalida");
         }
 
 	}
