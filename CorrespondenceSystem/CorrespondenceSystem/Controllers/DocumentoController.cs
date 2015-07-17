@@ -33,5 +33,11 @@ namespace CorrespondenceSystem.Controllers
             return View("RegistrarDocumentoSalida");
         }
 
+        [HttpGet]
+        public ActionResult Entrada()
+        {
+            
+            return View("RegistrarDocumentoEntrada");
+        }
 	}
 }
