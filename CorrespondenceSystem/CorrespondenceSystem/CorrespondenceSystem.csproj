@@ -165,6 +165,7 @@
     <Compile Include="Controllers\DocumentoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\MovimientoController.cs" />
     <Compile Include="DomainClasses\Departamento.cs" />
     <Compile Include="DomainClasses\Documento.cs" />
     <Compile Include="DomainClasses\Mensajero.cs" />
@@ -202,6 +203,7 @@
     <Content Include="Views\Documento\RegistrarDocumentoSalida.cshtml" />
     <Content Include="Views\Documento\RegistrarDocumentoEntrada.cshtml" />
     <Content Include="Views\Documento\RegistrarDocumentoEntradaUser.cshtml" />
+    <Content Include="Views\Movimiento\verMovimientosHistorial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
