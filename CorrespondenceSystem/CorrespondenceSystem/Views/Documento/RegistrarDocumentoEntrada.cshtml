@@ -1,7 +1,46 @@
 ﻿
 @{
-    ViewBag.Title = "RegistrarDocumentoEntrada";
+    ViewBag.Title = "Registrar Entrada";
 }
 
-<h2>RegistrarDocumentoEntrada</h2>
-
+<div class="row">
+    <div class="col-md-3 form-group">
+        <label for="select-tipoRemitente">Tipo de Remitente</label>
+        <select name="" id="select-tipoRemitente" class="form-control">
+            <option value="1">Regional</option>
+            <option value="2">Departamento</option>
+        </select>
+    </div>
+    <div class="col-md-3 form-group">
+        <label for="select-remitente">Remitente</label>
+        <select name="" id="select-remitente" class="form-control">
+            <option value="1">Tecnologia</option>
+            <option value="2">Del Valle</option>
+        </select>
+    </div>
+    <div class="col-md-6 form-group"></div>
+</div>
+<div class="row">
+    <div class="col-md-3 form-group">
+        <label for="select-regional">Regional</label>
+        <select name="" id="select-regional" class="form-control">
+            <option value="1">Regional</option>
+            <option value="2">Departamento</option>
+        </select>
+    </div>
+    <div class="col-md-3 form-group">
+        <label for="txt-codDocumento">Codigo del Documento</label>
+        <input type="text" id="txt-codDocumento" placeholder="Codigo del Documento" class="form-control">
+    </div>
+    <div class="col-md-3 form-group">
+        <label for="txt-fechaEntrada">Fecha de Entrada</label>
+        <input type="text" id="txt-fechaEntrada" placeholder="Fecha de Entrada" class="form-control">
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-2 col-md-offset-10">
+        <button type="submit" class="btn btn-primary btn-block btn-lg">
+            Registrar
+        </button>
+    </div>
+</div>

@@ -201,6 +201,7 @@
     <Content Include="Views\Documento\VerDocumentos.cshtml" />
     <Content Include="Views\Documento\RegistrarDocumentoSalida.cshtml" />
     <Content Include="Views\Documento\RegistrarDocumentoEntrada.cshtml" />
+    <Content Include="Views\Documento\RegistrarDocumentoEntradaUser.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
