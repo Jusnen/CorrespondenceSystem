@@ -12,14 +12,12 @@ namespace CorrespondenceSystem.Controllers
             return View("VerDocumentos");
         }
 
-        //
         [HttpGet]
         public ActionResult VerDocumentos()
         {
             return View("VerDocumentos");
         }
 
-        //GET: /Documento/Nuevo
         [HttpGet]
         public ActionResult Nuevo()
         {
@@ -38,6 +36,13 @@ namespace CorrespondenceSystem.Controllers
         {
             
             return View("RegistrarDocumentoEntrada");
+        }
+
+        [HttpGet]
+        public ActionResult EntradaUser()
+        {
+            
+            return View("RegistrarDocumentoEntradaUser");
         }
 	}
 }
