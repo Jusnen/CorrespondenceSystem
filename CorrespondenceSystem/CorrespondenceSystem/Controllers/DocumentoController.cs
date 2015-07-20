@@ -13,7 +13,7 @@ namespace CorrespondenceSystem.Controllers
         }
 
         [HttpGet]
-        public ActionResult VerDocumentos()
+        public ActionResult Documentos()
         {
             return View("DocumentoVerTodos");
         }
