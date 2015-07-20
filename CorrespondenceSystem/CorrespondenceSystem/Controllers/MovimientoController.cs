@@ -12,14 +12,14 @@ namespace CorrespondenceSystem.Controllers
         // GET: /Movimiento/
         public ActionResult Index()
         {
-            return View("verMovimientosHistorial");
+            return View("MovimientoVerHistorialTodos");
         }
 
         [HttpGet]
         public ActionResult Ver()
         {
-            
-            return View("verMovimientosHistorial");
+
+            return View("MovimientoVerHistorialTodos");
         }
 	}
 }

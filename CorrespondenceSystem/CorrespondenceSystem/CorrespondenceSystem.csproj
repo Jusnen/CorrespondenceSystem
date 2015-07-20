@@ -197,13 +197,12 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Shared\_LoginLayout.cshtml" />
-    <Content Include="Views\Home\RegistrarDocumentoNuevo.cshtml" />
-    <Content Include="Views\Documento\RegistrarDocumentoNuevo.cshtml" />
-    <Content Include="Views\Documento\VerDocumentos.cshtml" />
-    <Content Include="Views\Documento\RegistrarDocumentoSalida.cshtml" />
-    <Content Include="Views\Documento\RegistrarDocumentoEntrada.cshtml" />
-    <Content Include="Views\Documento\RegistrarDocumentoEntradaUser.cshtml" />
-    <Content Include="Views\Movimiento\verMovimientosHistorial.cshtml" />
+    <Content Include="Views\Documento\DocumentoRegistrarNuevo.cshtml" />
+    <Content Include="Views\Documento\DocumentoVerTodos.cshtml" />
+    <Content Include="Views\Documento\DocumentoRegistrarSalida.cshtml" />
+    <Content Include="Views\Documento\DocumentoRegistrarEntrada.cshtml" />
+    <Content Include="Views\Documento\DocumentoRegistrarEntradaUser.cshtml" />
+    <Content Include="Views\Movimiento\MovimientoVerHistorialTodos.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

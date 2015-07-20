@@ -48,7 +48,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="/">Logo</a>
+    <a class="navbar-brand" href="@Url.Action("Index", "Home")Home/Index/">Logo</a>
 </div>
 <!-- /.navbar-header -->
 
@@ -253,7 +253,7 @@
         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
         </li>
         <li class="divider"></li>
-        <li><a href="/Login/"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+        <li><a href="@Url.Action("Index", "Login")"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
         </li>
     </ul>
     <!-- /.dropdown-user -->
@@ -266,72 +266,43 @@
     <div class="sidebar-nav navbar-collapse">
         <ul class="nav nav navbar-nav side-nav in" id="side-menu">
             <li>
-                <a href="/Home/index">Inicio</a>
+                <a href="@Url.Action("Index", "Home")Home/Index">Inicio</a>
             </li>
             <li>
-                <a href="/Documento/"><i class="fa fa-file-o fa-fw"></i> Documentos<span class="fa arrow"></span></a>
+                <a href="@Url.Action("index","Documento")"><i class="fa fa-file-o fa-fw"></i> Documentos<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="/Documento/Nuevo/">Nuevo Documento</a>
+                        <a href="@Url.Action("Nuevo","Documento")">Nuevo Documento</a>
                     </li>
                     <li>
-                        <a href="/Documento/Salida/">Registrar Salida</a>
+                        <a href="@Url.Action("Salida","Documento")">Registrar Salida</a>
                     </li>
                     <li>
-                        <a href="/Documento/Entrada/">Registrar Entrada</a>
+                        <a href="@Url.Action("Entrada","Documento")">Registrar Entrada</a>
                     </li>
                     <li>
-                        <a href="/Documento/EntradaUser/">Registrar Entrada (User)</a>
+                        <a href="@Url.Action("EntradaUser","Documento")">Registrar Entrada (User)</a>
                     </li>
                 </ul>
                 <!-- /.nav-second-level -->
             </li>
             <li>
-                <a href="/Movimiento/"><i class="fa fa-exchange fa-fw"></i> Movimientos<span class="fa arrow"></span></a>
+                <a href="@Url.Action("Index", "Movimiento")"><i class="fa fa-exchange fa-fw"></i> Movimientos<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="/Movimiento/Ver/">Historial</a>
+                        <a href="@Url.Action("Ver", "Movimiento")">Historial</a>
                     </li>
 
                 </ul>
                 <!-- /.nav-second-level -->
             </li>
             <li>
-                <a href="tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>
+                <a href="#"><i class="fa fa-table fa-fw"></i> Tables</a>
             </li>
-            <li>
-                <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Forms</a>
-            </li>
-            <li>
-                <a href="#"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level">
-                    <li>
-                        <a href="panels-wells.html">Panels and Wells</a>
-                    </li>
-                    <li>
-                        <a href="buttons.html">Buttons</a>
-                    </li>
-                    <li>
-                        <a href="notifications.html">Notifications</a>
-                    </li>
-                    <li>
-                        <a href="typography.html">Typography</a>
-                    </li>
-                    <li>
-                        <a href="icons.html"> Icons</a>
-                    </li>
-                    <li>
-                        <a href="grid.html">Grid</a>
-                    </li>
-                </ul>
-                <!-- /.nav-second-level -->
-            </li>
+
             <li>
                 <a href="#"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
-                    <li>
-                        <a href="#">Second Level Item</a>
-                    </li>
                     <li>
                         <a href="#">Second Level Item</a>
                     </li>
@@ -352,18 +323,6 @@
                             </li>
                         </ul>
                         <!-- /.nav-third-level -->
-                    </li>
-                </ul>
-                <!-- /.nav-second-level -->
-            </li>
-            <li class="active">
-                <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level">
-                    <li>
-                        <a class="active" href="blank.html">Blank Page</a>
-                    </li>
-                    <li>
-                        <a href="/Login/">Login Page</a>
                     </li>
                 </ul>
                 <!-- /.nav-second-level -->
@@ -399,11 +358,6 @@
 <!-- jQuery -->
 
 <script src="~/Scripts/jquery-2.1.4.js"></script>
-
-
-
-
-
 
 <!-- Bootstrap Core JavaScript -->
 <script src="~/Scripts/bootstrap.min.js"></script>
