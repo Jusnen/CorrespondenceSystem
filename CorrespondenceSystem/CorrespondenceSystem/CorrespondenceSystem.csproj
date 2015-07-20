@@ -203,6 +203,7 @@
     <Content Include="Views\Documento\DocumentoRegistrarEntrada.cshtml" />
     <Content Include="Views\Documento\DocumentoRegistrarEntradaUser.cshtml" />
     <Content Include="Views\Movimiento\MovimientoVerHistorialTodos.cshtml" />
+    <Content Include="Views\Documento\DocumentoVerDocumento.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

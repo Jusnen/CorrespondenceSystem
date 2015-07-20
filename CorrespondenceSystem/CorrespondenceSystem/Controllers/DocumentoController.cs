@@ -44,5 +44,12 @@ namespace CorrespondenceSystem.Controllers
 
             return View("DocumentoRegistrarEntradaUser");
         }
+
+        [HttpGet]
+        public ActionResult Documento()
+        {
+            
+            return View("DocumentoVerDocumento");
+        }
 	}
 }

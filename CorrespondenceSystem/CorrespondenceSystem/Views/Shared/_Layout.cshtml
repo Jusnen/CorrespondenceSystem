@@ -18,11 +18,22 @@
     <link href="~/Content/metisMenu.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="~/Content/sb-admin-2.css" rel="stylesheet" />
+    <link href="~/Content/sb-admin-2.css" rel="stylesheet"/>
 
     <!-- Custom Fonts -->
-    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet"/>
 
+    <!-- jQuery -->
+    <script src="~/Scripts/jquery-2.1.4.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="~/Scripts/metisMenu.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="~/Scripts/sb-admin-2.js"></script>
 
 
 
@@ -32,7 +43,6 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
 </head>
 
 <body>
@@ -330,6 +340,14 @@
                 </ul>
                 <!-- /.nav-second-level -->
             </li>
+            <li>
+                <a href="#"><i class="fa fa-plus fa-fw"></i>Ventanas Dependientes<span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a href="@Url.Action("Documento", "Documento")">Ver Documento</a>
+                    </li>
+                </ul>
+            </li>
         </ul>
     </div>
     <!-- /.sidebar-collapse -->
@@ -358,18 +376,6 @@
 </div>
 <!-- /#wrapper -->
 
-<!-- jQuery -->
-
-<script src="~/Scripts/jquery-2.1.4.js"></script>
-
-<!-- Bootstrap Core JavaScript -->
-<script src="~/Scripts/bootstrap.min.js"></script>
-
-<!-- Metis Menu Plugin JavaScript -->
-<script src="~/Scripts/metisMenu.min.js"></script>
-
-<!-- Custom Theme JavaScript -->
-<script src="~/Scripts/sb-admin-2.js"></script>
 @*@RenderSection("scripts", required: false)*@
 </body>
 
