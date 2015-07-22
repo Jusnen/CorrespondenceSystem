@@ -1,8 +1,9 @@
-﻿namespace CorrespondenceSystem.DomainClasses
+﻿using CorrespondenceSystem.Implementations;
+
+namespace CorrespondenceSystem.DomainClasses
 {
-    public class TipoMovimiento
+    public class TipoMovimiento : Entity<int>
     {
-        public virtual int idTipoMovimiento { get; set; }
         public virtual string descripcion { get; set; }
     }
 }

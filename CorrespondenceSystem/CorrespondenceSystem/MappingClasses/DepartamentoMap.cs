@@ -7,7 +7,7 @@ namespace CorrespondenceSystem.MappingClasses
     {
         public DepartamentoMap()
         {
-            Id(a => a.idDepartamento);
+            Id(a => a.id).Column("idDepartamento");
             Map(a => a.descripcion).Not.Nullable();
             References(a => a.tipoDepartamento).Column("idTipoDepartamento").Not.Nullable();
         }

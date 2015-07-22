@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using CorrespondenceSystem.Implementations;
 
 namespace CorrespondenceSystem.DomainClasses
 {
-    public class Usuario
+    public class Usuario : Entity<int>
     {
-        public virtual int idUsuario { get; set; }
         public virtual string nombre { get; set; }
         public virtual string correo { get; set; }
         public virtual TipoUsuario tipoUsuario { get; set; }
@@ -18,6 +18,7 @@ namespace CorrespondenceSystem.DomainClasses
         public Usuario()
         {
             tipoUsuario = new TipoUsuario();
+            fechaRegistro = DateTime.Now;
         }
     }
 }

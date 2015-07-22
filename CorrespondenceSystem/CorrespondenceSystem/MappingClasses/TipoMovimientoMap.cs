@@ -7,9 +7,8 @@ namespace CorrespondenceSystem.MappingClasses
     {
         public TipoMovimientoMap()
         {
-            Id(a => a.idTipoMovimiento);
+            Id(a => a.id).Column("idTipoMovimiento");
             Map(a => a.descripcion).Not.Nullable();
-            
         }
     }
 }

@@ -7,7 +7,7 @@ namespace CorrespondenceSystem.MappingClasses
     {
         public DocumentoMap()
         {
-            Id(a => a.idDocumento);
+            Id(a => a.id).Column("idDocumento");
             Map(a => a.codigo).Not.Nullable();
             Map(a => a.fechaCreacionUsuario).Not.Nullable();
             Map(a => a.fechaRegistroUsuario).Not.Nullable();
@@ -17,7 +17,6 @@ namespace CorrespondenceSystem.MappingClasses
             Map(a => a.fechaModificacion);
             Map(a => a.usuarioCreacion).Not.Nullable();
             Map(a => a.usuarioModificacion);
-
         }
     }
 }

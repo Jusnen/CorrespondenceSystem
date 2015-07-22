@@ -1,6 +1,8 @@
-﻿namespace CorrespondenceSystem.DomainClasses
+﻿using CorrespondenceSystem.Implementations;
+
+namespace CorrespondenceSystem.DomainClasses
 {
-    public class Departamento
+    public class Departamento : Entity<int>
     {
         public virtual int idDepartamento { get; set; }
         public virtual string descripcion { get; set; }

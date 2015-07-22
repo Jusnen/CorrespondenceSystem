@@ -1,10 +1,10 @@
 ﻿using System;
+using CorrespondenceSystem.Implementations;
 
 namespace CorrespondenceSystem.DomainClasses
 {
-    public class Movimiento
+    public class Movimiento : Entity<int>
     {
-        public virtual int idMovimiento { get; set; }
         public virtual Documento documento { get; set; }
         public virtual Mensajero mensajero { get; set; }
         public virtual TipoMovimiento tipoMovimiento { get; set; }
@@ -18,11 +18,13 @@ namespace CorrespondenceSystem.DomainClasses
 
         public Movimiento()
         {
-            usuario = new Usuario();
             documento = new Documento();
             mensajero = new Mensajero();
             tipoMovimiento = new TipoMovimiento();
             departamento = new Departamento();
+            usuario = new Usuario();
+            fecha = DateTime.Now;
+            fechaCreacion = DateTime.Now;
         }
     }
 }

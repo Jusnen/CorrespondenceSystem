@@ -7,9 +7,8 @@ namespace CorrespondenceSystem.MappingClasses
     {
         public TipoUsuarioMap()
         {
-            Id(a => a.idTipoUsuario);
+            Id(a => a.id).Column("idTipoUsuario");
             Map(a => a.descripcion).Not.Nullable();
-            
         }
     }
 }

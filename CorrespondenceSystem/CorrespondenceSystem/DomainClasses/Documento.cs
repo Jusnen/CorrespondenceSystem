@@ -1,10 +1,10 @@
 ﻿using System;
+using CorrespondenceSystem.Implementations;
 
 namespace CorrespondenceSystem.DomainClasses
 {
-    public class Documento
+    public class Documento : Entity<int>
     {
-        public virtual int idDocumento { get; set; }
         public virtual string codigo { get; set; }
         public virtual DateTime fechaCreacionUsuario { get; set; }
         public virtual DateTime fechaRegistroUsuario { get; set; }
@@ -18,6 +18,8 @@ namespace CorrespondenceSystem.DomainClasses
         public Documento()
         {
             departamento = new Departamento();
+            fechaRegistroUsuario = DateTime.Now;
+            fechaCreacion = DateTime.Now;
         }
     }
 }

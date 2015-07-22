@@ -7,7 +7,7 @@ namespace CorrespondenceSystem.MappingClasses
     {
         public MovimientoMap()
         {
-            Id(a => a.idMovimiento);
+            Id(a => a.id).Column("idMovimiento");
             Map(a => a.fecha).Not.Nullable();
             References(a => a.documento).Column("idDocumento").Not.Nullable();
             References(a => a.mensajero).Column("idMensajero");
