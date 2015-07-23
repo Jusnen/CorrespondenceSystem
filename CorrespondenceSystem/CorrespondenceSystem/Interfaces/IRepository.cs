@@ -1,6 +1,5 @@
 ﻿using System.Linq;
 using CorrespondenceSystem.Implementations;
-using NHibernate.Persister.Entity;
 
 namespace CorrespondenceSystem.Interfaces
 {

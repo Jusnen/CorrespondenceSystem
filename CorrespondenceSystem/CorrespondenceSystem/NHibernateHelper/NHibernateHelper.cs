@@ -4,6 +4,7 @@ using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using NHibernate;
 using NHibernate.Tool.hbm2ddl;
+
 /*librerias NHibernate*/
 
 namespace MvcGCP.NHibernateHelpers
