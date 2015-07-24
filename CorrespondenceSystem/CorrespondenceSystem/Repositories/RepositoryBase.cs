@@ -7,12 +7,19 @@ using NHibernate.Linq;
 
 namespace CorrespondenceSystem.Repositories
 {
-    public abstract class RepositoryBase<TEntity, TPrimaryKey> : IRepository<TEntity, TPrimaryKey> where TEntity : Entity<TPrimaryKey>
+    public class RepositoryBase<TEntity, TPrimaryKey> : IRepository<TEntity, TPrimaryKey>
+        where TEntity : Entity<TPrimaryKey>
     {
-        protected ISession Session { get { return NhUnitOfWork.Current.Session; } }
+        protected ISession Session;
 
         /// Used to get a IQueryable that is used to retrive object from entire table.
         /// IQueryable to be used to select entities from database
+
+        public RepositoryBase(ISession session)
+        {
+            Session = session;
+        }
+
         public IQueryable<TEntity> GetAll()
         {
             return Session.Query<TEntity>();
@@ -40,6 +47,11 @@ namespace CorrespondenceSystem.Repositories
         public void Delete(TPrimaryKey id)
         {
             Session.Delete(Session.Load<TEntity>(id));
+        }
+
+        ~RepositoryBase()
+        {
+            Session.Close();
         }
     }
 }

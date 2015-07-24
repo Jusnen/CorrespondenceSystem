@@ -11,7 +11,7 @@ namespace CorrespondenceSystem.DomainClasses
         public virtual string asunto { get; set; }
         public virtual Departamento departamento { get; set; }
         public virtual DateTime fechaCreacion { get; set; }
-        public virtual DateTime fechaModificacion { get; set; }
+        public virtual DateTime? fechaModificacion { get; set; }
         public virtual int usuarioCreacion { get; set; }
         public virtual int usuarioModificacion { get; set; }
 
