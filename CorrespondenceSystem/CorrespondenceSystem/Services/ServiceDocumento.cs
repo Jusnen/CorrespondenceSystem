@@ -24,25 +24,6 @@ namespace CorrespondenceSystem.Services
             _repository = new RepositoryBase<Documento, int>(_session);
         }
 
-        public List<Documento> GetAllDocumento()
-        {
-           return _repository.GetAll().OrderBy(documento => documento.codigo).ToList();
-        }
-
-        public List<Documento> GetAllDocumentoFromRemitente(string remitente)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Documento> GetAllDocumentoFromFechaRegistrado(DateTime fechaInicio, DateTime fechaFinal)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Documento> GetAllDocumentoFromFechaCracion(DateTime fechaInicio, DateTime fechaFinal)
-        {
-            throw new NotImplementedException();
-        }
 
         public Documento GetDocumentoByCodigo(string codigo)
         {
@@ -56,15 +37,40 @@ namespace CorrespondenceSystem.Services
 
         public void InsertDocumento(Documento documento)
         {
-            _repository.Insert(documento);
+            throw new NotImplementedException();
         }
 
-        public void UpdateDocumento(Documento documento)
+        public List<Documento> GetAllDocumentoByDepartamento(Departamento departamento)
         {
             throw new NotImplementedException();
         }
 
         public void UpdateStatus(Documento documento)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Documento> GetAllDocumento()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Documento> GetAllDocumentoByFieldAndDate(string campo, DateTime fechaInicio, DateTime fechaFinal)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Documento> GetAllDocumentoByStatus(string status)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Movimiento> GetAllMovimiento(Documento documento)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateDocumento(Documento documento)
         {
             throw new NotImplementedException();
         }
