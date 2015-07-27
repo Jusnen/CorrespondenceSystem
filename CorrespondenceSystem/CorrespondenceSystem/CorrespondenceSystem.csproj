@@ -291,6 +291,7 @@
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IServiceDocumento.cs" />
     <Compile Include="Interfaces\IServiceMovimiento.cs" />
+    <Compile Include="Interfaces\IServiceUsuario.cs" />
     <Compile Include="Interfaces\IUnitOfWork.cs" />
     <Compile Include="MappingClasses\DepartamentoMap.cs" />
     <Compile Include="MappingClasses\DocumentoMap.cs" />
@@ -305,6 +306,8 @@
     <Compile Include="Repositories\RepositoryBase.cs" />
     <Compile Include="Services\NhUnitOfWork.cs" />
     <Compile Include="Services\ServiceDocumento.cs" />
+    <Compile Include="Services\ServiceMovimiento.cs" />
+    <Compile Include="Services\ServiceUsuario.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />

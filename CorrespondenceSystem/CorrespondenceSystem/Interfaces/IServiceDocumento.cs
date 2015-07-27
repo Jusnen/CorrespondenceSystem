@@ -8,20 +8,16 @@ namespace CorrespondenceSystem.Interfaces
 {
     public interface IServiceDocumento
     {
+        List<Documento> GetAllDocumentos();
+        List<Documento> GetAllDocumentosByFieldAndDate(string campo, DateTime fechaInicio, DateTime fechaFinal);
+        List<Documento> GetAllDocumentosByStatus(string status);
+        List<Documento> GetAllDocumentosByDepartamento(Departamento departamento);
+
         Documento GetDocumentoByCodigo(string codigo);
         Documento GetDocumentoById(int id);
         
         void InsertDocumento(Documento documento);
-        List<Documento> GetAllDocumentoByDepartamento(Departamento departamento);
-        void UpdateStatus(Documento documento);
-
-        List<Documento> GetAllDocumento();
-        List<Documento> GetAllDocumentoByFieldAndDate(string campo, DateTime fechaInicio, DateTime fechaFinal);
-
-        List<Documento> GetAllDocumentoByStatus(string status);
-        
-        List<Movimiento> GetAllMovimiento(Documento documento);
-        
         void UpdateDocumento(Documento documento);
+        void UpdateStatus(Documento documento);
     }
 }

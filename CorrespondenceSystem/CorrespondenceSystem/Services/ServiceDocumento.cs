@@ -24,6 +24,25 @@ namespace CorrespondenceSystem.Services
             _repository = new RepositoryBase<Documento, int>(_session);
         }
 
+        public List<Documento> GetAllDocumentos()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Documento> GetAllDocumentosByFieldAndDate(string campo, DateTime fechaInicio, DateTime fechaFinal)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Documento> GetAllDocumentosByStatus(string status)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Documento> GetAllDocumentosByDepartamento(Departamento departamento)
+        {
+            throw new NotImplementedException();
+        }
 
         public Documento GetDocumentoByCodigo(string codigo)
         {
@@ -40,37 +59,12 @@ namespace CorrespondenceSystem.Services
             throw new NotImplementedException();
         }
 
-        public List<Documento> GetAllDocumentoByDepartamento(Departamento departamento)
+        public void UpdateDocumento(Documento documento)
         {
             throw new NotImplementedException();
         }
 
         public void UpdateStatus(Documento documento)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Documento> GetAllDocumento()
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Documento> GetAllDocumentoByFieldAndDate(string campo, DateTime fechaInicio, DateTime fechaFinal)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Documento> GetAllDocumentoByStatus(string status)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Movimiento> GetAllMovimiento(Documento documento)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateDocumento(Documento documento)
         {
             throw new NotImplementedException();
         }
