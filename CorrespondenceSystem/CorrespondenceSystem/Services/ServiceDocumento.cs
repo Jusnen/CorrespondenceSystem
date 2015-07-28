@@ -50,7 +50,8 @@ namespace CorrespondenceSystem.Services
 
         public Documento GetDocumentoByCodigo(string codigo)
         {
-            return _repository.Get(x => x.codigo.Equals(codigo));
+
+            return _repository.Get(x => x.codigo == codigo);
         }
 
         public Documento GetDocumentoById(int id)

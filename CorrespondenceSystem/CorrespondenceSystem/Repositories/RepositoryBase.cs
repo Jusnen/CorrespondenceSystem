@@ -34,7 +34,7 @@ namespace CorrespondenceSystem.Repositories
         // Gets an entity filtered
         public TEntity Get(Expression<Func<TEntity, bool>> expression)
         {
-            return Session.Get<TEntity>(expression);
+            return Session.Query<TEntity>().Where(expression).ToList()[0];
         }
 
         /// Inserts a new entity.
