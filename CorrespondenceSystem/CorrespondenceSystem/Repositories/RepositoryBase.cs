@@ -1,7 +1,8 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
+using System.Linq.Expressions;
 using CorrespondenceSystem.Implementations;
 using CorrespondenceSystem.Interfaces;
-using CorrespondenceSystem.Services;
 using NHibernate;
 using NHibernate.Linq;
 
@@ -20,15 +21,20 @@ namespace CorrespondenceSystem.Repositories
             Session = session;
         }
 
+        //Gets an list of entities filtered
+        public IQueryable<TEntity> GetAll(Expression<Func<TEntity, bool>> expression)
+        {
+            return Session.Query<TEntity>().Where(expression);
+        }
+
         public IQueryable<TEntity> GetAll()
         {
             return Session.Query<TEntity>();
         }
-
-        /// Gets an entity.
-        public TEntity Get(TPrimaryKey key)
+        // Gets an entity filtered
+        public TEntity Get(Expression<Func<TEntity, bool>> expression)
         {
-            return Session.Get<TEntity>(key);
+            return Session.Get<TEntity>(expression);
         }
 
         /// Inserts a new entity.
