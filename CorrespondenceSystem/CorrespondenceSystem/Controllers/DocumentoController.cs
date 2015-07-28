@@ -21,7 +21,6 @@ namespace CorrespondenceSystem.Controllers
         [HttpGet]
         public ActionResult Nuevo()
         {
-
             return View("DocumentoRegistrarNuevo");
         }
 
@@ -34,22 +33,19 @@ namespace CorrespondenceSystem.Controllers
         [HttpGet]
         public ActionResult Entrada()
         {
-
             return View("DocumentoRegistrarEntrada");
         }
 
         [HttpGet]
         public ActionResult EntradaUser()
         {
-
             return View("DocumentoRegistrarEntradaUser");
         }
 
         [HttpGet]
         public ActionResult Documento()
         {
-            
             return View("DocumentoVerDocumento");
         }
-	}
+    }
 }

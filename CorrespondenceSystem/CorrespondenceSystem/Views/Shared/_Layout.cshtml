@@ -24,10 +24,10 @@
     <link href="~/Content/font-awesome.min.css" rel="stylesheet"/>
 
     <!-- jQuery UI CSS -->
-    <link href="~/Content/themes/base/all.css" rel="stylesheet" />
+    <link href="~/Content/themes/base/all.css" rel="stylesheet"/>
 
     <!-- Bootstrap DatePicker CSS -->
-    <link href="~/Content/bootstrap-datepicker3.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-datepicker3.css" rel="stylesheet"/>
 
     <!-- jQuery -->
     <script src="~/Scripts/jquery-2.1.4.min.js"></script>
@@ -61,7 +61,7 @@
 <body>
 
 <div id="wrapper">
-@RenderSection("featured", required: false)
+@RenderSection("featured", false)
 <!-- Navigation -->
 <nav class="navbar navbar-default navbar-static-top navbar-inverse" role="navigation" style="margin-bottom: 0">
 <div class="navbar-header">
@@ -271,12 +271,15 @@
         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
     </a>
     <ul class="dropdown-menu dropdown-user">
-        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+        <li>
+            <a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
         </li>
-        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+        <li>
+            <a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
         </li>
         <li class="divider"></li>
-        <li><a href="@Url.Action("Index", "Login")"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+        <li>
+            <a href="@Url.Action("Index", "Login")"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
         </li>
     </ul>
     <!-- /.dropdown-user -->
@@ -401,4 +404,3 @@
 </body>
 
 </html>
-

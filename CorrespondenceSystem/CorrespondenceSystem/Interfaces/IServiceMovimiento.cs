@@ -10,9 +10,7 @@ namespace CorrespondenceSystem.Interfaces
         List<Movimiento> GetAllMovimientosFromDocumentoCodigo(string codigoDocumento);
         List<Movimiento> GetAllMovimientosFromDepartamento(int idDepartamento);
         List<Movimiento> GetAllMovimientosFromFecha(int idDepartamento, DateTime fechaInicio, DateTime fechaFinal);
-        
         Movimiento GetMovimiento(int idDocumento);
-
         void InsertMovimiento(Movimiento movimiento);
     }
 }

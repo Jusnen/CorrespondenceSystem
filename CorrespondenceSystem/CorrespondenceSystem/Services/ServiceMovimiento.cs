@@ -42,8 +42,8 @@ namespace CorrespondenceSystem.Services
         public List<Movimiento> GetAllMovimientosFromFecha(int idDepartamento, DateTime fechaInicio, DateTime fechaFinal)
         {
             return _repository.GetAll(x => x.departamento.id == idDepartamento &&
-                x.fecha >= fechaInicio &&
-                x.fecha <= fechaFinal)
+                                           x.fecha >= fechaInicio &&
+                                           x.fecha <= fechaFinal)
                 .ToList();
         }
 
@@ -51,10 +51,10 @@ namespace CorrespondenceSystem.Services
         {
             return _repository.Get(x => x.documento.id == idDocumento);
         }
+
         public void InsertMovimiento(Movimiento movimiento)
         {
             _repository.Insert(movimiento);
         }
-
     }
 }

@@ -13,11 +13,6 @@ namespace MvcGCP.NHibernateHelpers
     {
         private readonly string _connectionString;
         private ISessionFactory _sessionFactory;
-        
-        public ISessionFactory SessionFactory
-        {
-            get { return _sessionFactory ?? (_sessionFactory = CreateSessionFactory()); }
-        }
 
         public NHibernateHelper()
         {
@@ -30,15 +25,20 @@ namespace MvcGCP.NHibernateHelpers
             //@"Data Source=SOL-DS-01;Initial Catalog=GCP;Trusted_Connection=True";
         }
 
+        public ISessionFactory SessionFactory
+        {
+            get { return _sessionFactory ?? (_sessionFactory = CreateSessionFactory()); }
+        }
+
         public ISessionFactory CreateSessionFactory()
         {
             var configuration = Fluently.Configure()
-            .Database(MsSqlConfiguration.MsSql2008
-                .ConnectionString(_connectionString)
-                .ShowSql())
-            .ExposeConfiguration(c => new SchemaUpdate(c).Execute(false,true))
-            .Mappings(m => m.FluentMappings.AddFromAssembly(Assembly.GetExecutingAssembly()))
-            .BuildConfiguration();
+                .Database(MsSqlConfiguration.MsSql2008
+                    .ConnectionString(_connectionString)
+                    .ShowSql())
+                .ExposeConfiguration(c => new SchemaUpdate(c).Execute(false, true))
+                .Mappings(m => m.FluentMappings.AddFromAssembly(Assembly.GetExecutingAssembly()))
+                .BuildConfiguration();
 
             _sessionFactory = configuration.BuildSessionFactory();
             return _sessionFactory;

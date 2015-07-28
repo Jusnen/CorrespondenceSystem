@@ -10,5 +10,5 @@ namespace CorrespondenceSystem.Controllers
         {
             return View();
         }
-	}
+    }
 }

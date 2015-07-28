@@ -15,7 +15,6 @@ namespace CorrespondenceSystem.Repositories
 
         /// Used to get a IQueryable that is used to retrive object from entire table.
         /// IQueryable to be used to select entities from database
-
         public RepositoryBase(ISession session)
         {
             Session = session;
@@ -31,6 +30,7 @@ namespace CorrespondenceSystem.Repositories
         {
             return Session.Query<TEntity>();
         }
+
         // Gets an entity filtered
         public TEntity Get(Expression<Func<TEntity, bool>> expression)
         {

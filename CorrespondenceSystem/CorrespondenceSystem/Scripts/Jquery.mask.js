@@ -4,12 +4,12 @@
 	Licensed under the MIT license (http://digitalbush.com/projects/masked-input-plugin/#license)
 	Version: 1.3.1
 */
-(function ($) {
+(function($) {
     function getPasteEvent() {
-        var el = document.createElement('input'),
-            name = 'onpaste';
-        el.setAttribute(name, '');
-        return (typeof el[name] === 'function') ? 'paste' : 'input';
+        var el = document.createElement("input"),
+            name = "onpaste";
+        el.setAttribute(name, "");
+        return (typeof el[name] === "function") ? "paste" : "input";
     }
 
     var pasteEventName = getPasteEvent() + ".mask",
@@ -26,28 +26,28 @@
             '*': "[A-Za-z0-9]"
         },
         dataName: "rawMaskFn",
-        placeholder: '_',
+        placeholder: "_",
     };
 
     $.fn.extend({
         //Helper Function for Caret positioning
-        caret: function (begin, end) {
+        caret: function(begin, end) {
             var range;
 
             if (this.length === 0 || this.is(":hidden")) {
                 return;
             }
 
-            if (typeof begin == 'number') {
-                end = (typeof end === 'number') ? end : begin;
-                return this.each(function () {
+            if (typeof begin == "number") {
+                end = (typeof end === "number") ? end : begin;
+                return this.each(function() {
                     if (this.setSelectionRange) {
                         this.setSelectionRange(begin, end);
                     } else if (this.createTextRange) {
                         range = this.createTextRange();
                         range.collapse(true);
-                        range.moveEnd('character', end);
-                        range.moveStart('character', begin);
+                        range.moveEnd("character", end);
+                        range.moveStart("character", begin);
                         range.select();
                     }
                 });
@@ -57,16 +57,16 @@
                     end = this[0].selectionEnd;
                 } else if (document.selection && document.selection.createRange) {
                     range = document.selection.createRange();
-                    begin = 0 - range.duplicate().moveStart('character', -100000);
+                    begin = 0 - range.duplicate().moveStart("character", -100000);
                     end = begin + range.text.length;
                 }
                 return { begin: begin, end: end };
             }
         },
-        unmask: function () {
+        unmask: function() {
             return this.trigger("unmask");
         },
-        mask: function (mask, settings) {
+        mask: function(mask, settings) {
             var input,
                 defs,
                 tests,
@@ -89,8 +89,8 @@
             partialPosition = len = mask.length;
             firstNonMaskPos = null;
 
-            $.each(mask.split(""), function (i, c) {
-                if (c == '?') {
+            $.each(mask.split(""), function(i, c) {
+                if (c == "?") {
                     len--;
                     partialPosition = i;
                 } else if (defs[c]) {
@@ -103,15 +103,15 @@
                 }
             });
 
-            return this.trigger("unmask").each(function () {
+            return this.trigger("unmask").each(function() {
                 var input = $(this),
                     buffer = $.map(
-                    mask.split(""),
-                    function (c, i) {
-                        if (c != '?') {
-                            return defs[c] ? settings.placeholder : c;
-                        }
-                    }),
+                        mask.split(""),
+                        function(c, i) {
+                            if (c != "?") {
+                                return defs[c] ? settings.placeholder : c;
+                            }
+                        }),
                     focusText = input.val();
 
                 function seekNext(pos) {
@@ -132,7 +132,7 @@
                         return;
                     }
 
-                    for (i = begin, j = seekNext(end) ; i < len; i++) {
+                    for (i = begin, j = seekNext(end); i < len; i++) {
                         if (tests[i]) {
                             if (j < len && tests[i].test(buffer[j])) {
                                 buffer[i] = buffer[j];
@@ -188,7 +188,7 @@
                         shiftL(begin, end - 1);
 
                         e.preventDefault();
-                    } else if (k == 27) {//escape
+                    } else if (k == 27) { //escape
                         input.val(focusText);
                         input.caret(0, checkVal());
                         e.preventDefault();
@@ -202,7 +202,7 @@
                         c,
                         next;
 
-                    if (e.ctrlKey || e.altKey || e.metaKey || k < 32) {//Ignore
+                    if (e.ctrlKey || e.altKey || e.metaKey || k < 32) { //Ignore
                         return;
                     } else if (k) {
                         if (pos.end - pos.begin !== 0) {
@@ -244,7 +244,7 @@
                     }
                 }
 
-                function writeBuffer() { input.val(buffer.join('')); }
+                function writeBuffer() { input.val(buffer.join("")); }
 
                 function checkVal(allow) {
                     //try to place characters where they belong
@@ -284,51 +284,51 @@
                     return (partialPosition ? i : firstNonMaskPos);
                 }
 
-                input.data($.mask.dataName, function () {
-                    return $.map(buffer, function (c, i) {
+                input.data($.mask.dataName, function() {
+                    return $.map(buffer, function(c, i) {
                         return tests[i] && c != settings.placeholder ? c : null;
-                    }).join('');
+                    }).join("");
                 });
 
                 if (!input.attr("readonly"))
                     input
-                    .one("unmask", function () {
-                        input
-                            .unbind(".mask")
-                            .removeData($.mask.dataName);
-                    })
-                    .bind("focus.mask", function () {
-                        clearTimeout(caretTimeoutId);
-                        var pos,
-                            moveCaret;
+                        .one("unmask", function() {
+                            input
+                                .unbind(".mask")
+                                .removeData($.mask.dataName);
+                        })
+                        .bind("focus.mask", function() {
+                            clearTimeout(caretTimeoutId);
+                            var pos,
+                                moveCaret;
 
-                        focusText = input.val();
-                        pos = checkVal();
+                            focusText = input.val();
+                            pos = checkVal();
 
-                        caretTimeoutId = setTimeout(function () {
-                            writeBuffer();
-                            if (pos == mask.length) {
-                                input.caret(0, pos);
-                            } else {
+                            caretTimeoutId = setTimeout(function() {
+                                writeBuffer();
+                                if (pos == mask.length) {
+                                    input.caret(0, pos);
+                                } else {
+                                    input.caret(pos);
+                                }
+                            }, 10);
+                        })
+                        .bind("blur.mask", function() {
+                            checkVal();
+                            if (input.val() != focusText)
+                                input.change();
+                        })
+                        .bind("keydown.mask", keydownEvent)
+                        .bind("keypress.mask", keypressEvent)
+                        .bind(pasteEventName, function() {
+                            setTimeout(function() {
+                                var pos = checkVal(true);
                                 input.caret(pos);
-                            }
-                        }, 10);
-                    })
-                    .bind("blur.mask", function () {
-                        checkVal();
-                        if (input.val() != focusText)
-                            input.change();
-                    })
-                    .bind("keydown.mask", keydownEvent)
-                    .bind("keypress.mask", keypressEvent)
-                    .bind(pasteEventName, function () {
-                        setTimeout(function () {
-                            var pos = checkVal(true);
-                            input.caret(pos);
-                            if (settings.completed && pos == input.val().length)
-                                settings.completed.call(input);
-                        }, 0);
-                    });
+                                if (settings.completed && pos == input.val().length)
+                                    settings.completed.call(input);
+                            }, 0);
+                        });
                 checkVal(); //Perform initial check for existing values
             });
         }

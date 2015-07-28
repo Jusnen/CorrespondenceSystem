@@ -5,17 +5,6 @@ namespace CorrespondenceSystem.DomainClasses
 {
     public class Movimiento : Entity<int>
     {
-        public virtual Documento documento { get; set; }
-        public virtual Mensajero mensajero { get; set; }
-        public virtual TipoMovimiento tipoMovimiento { get; set; }
-        public virtual Departamento departamento { get; set; }
-        public virtual Usuario usuario { get; set; }
-        public virtual DateTime fecha { get; set; }
-        public virtual DateTime fechaCreacion { get; set; }
-        public virtual DateTime fechaModificacion { get; set; }
-        public virtual int usuarioCreacion { get; set; }
-        public virtual int usuarioModificacion { get; set; }
-
         public Movimiento()
         {
             documento = new Documento();
@@ -26,5 +15,16 @@ namespace CorrespondenceSystem.DomainClasses
             fecha = DateTime.Now;
             fechaCreacion = DateTime.Now;
         }
+
+        public virtual Documento documento { get; set; }
+        public virtual Mensajero mensajero { get; set; }
+        public virtual TipoMovimiento tipoMovimiento { get; set; }
+        public virtual Departamento departamento { get; set; }
+        public virtual Usuario usuario { get; set; }
+        public virtual DateTime fecha { get; set; }
+        public virtual DateTime fechaCreacion { get; set; }
+        public virtual DateTime fechaModificacion { get; set; }
+        public virtual int usuarioCreacion { get; set; }
+        public virtual int usuarioModificacion { get; set; }
     }
 }

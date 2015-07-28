@@ -14,8 +14,7 @@ namespace CorrespondenceSystem.Controllers
         [HttpGet]
         public ActionResult Ver()
         {
-
             return View("MovimientoVerHistorialTodos");
         }
-	}
+    }
 }

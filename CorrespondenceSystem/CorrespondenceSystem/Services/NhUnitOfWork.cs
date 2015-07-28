@@ -6,17 +6,7 @@ namespace CorrespondenceSystem.Services
 {
     public class NhUnitOfWork : IUnitOfWork
     {
-        public static NhUnitOfWork Current
-        {
-            get { return _current; }
-            set { _current = value; }
-        }
-
-        [ThreadStatic]
-        private static NhUnitOfWork _current;
-
-        /// Gets Nhibernate session object to perform queries.
-        public ISession Session { get; private set; }
+        [ThreadStatic] private static NhUnitOfWork _current;
 
         /// Reference to the session factory.
         private readonly ISessionFactory _sessionFactory;
@@ -29,6 +19,15 @@ namespace CorrespondenceSystem.Services
         {
             _sessionFactory = sessionFactory;
         }
+
+        public static NhUnitOfWork Current
+        {
+            get { return _current; }
+            set { _current = value; }
+        }
+
+        /// Gets Nhibernate session object to perform queries.
+        public ISession Session { get; private set; }
 
         /// Opens database connection and begins transaction.
         public void BeginTransaction()
@@ -49,6 +48,7 @@ namespace CorrespondenceSystem.Services
                 Session.Close();
             }
         }
+
         /// Rollbacks transaction and closes database connection.
         public void RollBack()
         {
@@ -61,13 +61,10 @@ namespace CorrespondenceSystem.Services
                 Session.Close();
             }
         }
-        
-        
     }
 
     [AttributeUsage(AttributeTargets.Method)]
     public class UnitOfWorkAttribute : Attribute
     {
-        
     }
 }

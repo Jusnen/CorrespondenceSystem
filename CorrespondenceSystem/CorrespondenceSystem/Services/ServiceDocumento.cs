@@ -29,7 +29,6 @@ namespace CorrespondenceSystem.Services
             return _repository.GetAll().ToList();
         }
 
-
         public List<Documento> GetAllDocumentosByStatus(string status)
         {
             throw new NotImplementedException();
@@ -40,11 +39,12 @@ namespace CorrespondenceSystem.Services
             return _repository.GetAll(x => x.departamento.id == idDepartamento).ToList();
         }
 
-        public List<Documento> GetAllDocumentosByDepartamento(int idDepartamento, DateTime fechaInicio, DateTime fechaFinal)
+        public List<Documento> GetAllDocumentosByDepartamento(int idDepartamento, DateTime fechaInicio,
+            DateTime fechaFinal)
         {
-            return _repository.GetAll(x => x.departamento.id == idDepartamento && 
-                x.fechaRegistroUsuario >= fechaInicio && 
-                x.fechaRegistroUsuario <= fechaFinal)
+            return _repository.GetAll(x => x.departamento.id == idDepartamento &&
+                                           x.fechaRegistroUsuario >= fechaInicio &&
+                                           x.fechaRegistroUsuario <= fechaFinal)
                 .ToList();
         }
 

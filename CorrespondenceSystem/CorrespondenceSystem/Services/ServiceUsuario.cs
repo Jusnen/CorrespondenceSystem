@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using CorrespondenceSystem.DomainClasses;
 using CorrespondenceSystem.Interfaces;
 
@@ -8,17 +9,17 @@ namespace CorrespondenceSystem.Services
     {
         public List<Usuario> GetAllUsuarios()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public Usuario GetUsuario()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public void InsertUsuario()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 }

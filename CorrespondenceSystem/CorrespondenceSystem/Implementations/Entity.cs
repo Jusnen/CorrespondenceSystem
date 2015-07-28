@@ -1,6 +1,4 @@
-﻿using CorrespondenceSystem.Interfaces;
-
-namespace CorrespondenceSystem.Implementations
+﻿namespace CorrespondenceSystem.Implementations
 {
     public interface IEntity<TPrimaryKey>
     {

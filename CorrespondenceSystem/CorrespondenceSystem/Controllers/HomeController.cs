@@ -1,5 +1,4 @@
 ﻿using System.Web.Mvc;
-using MvcGCP.NHibernateHelpers;
 
 namespace CorrespondenceSystem.Controllers
 {
@@ -10,7 +9,6 @@ namespace CorrespondenceSystem.Controllers
         public ActionResult Index()
         {
             return View();
-
         }
-	}
+    }
 }

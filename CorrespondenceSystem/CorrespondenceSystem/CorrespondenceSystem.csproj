@@ -59,6 +59,10 @@
       <HintPath>..\packages\NHibernate.4.0.3.4000\lib\net40\NHibernate.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Result, Version=1.0.5239.28577, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Result.1.1.1\lib\net45\Result.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
