@@ -6,12 +6,12 @@ namespace CorrespondenceSystem.Interfaces
 {
     public interface IServiceMovimiento
     {
-        List<Movimiento> GetAllMovimientosFromDocumentoId(Documento documento);
-        List<Movimiento> GetAllMovimientosFromDocumentoCodigo(Documento documento);
-        List<Movimiento> GetAllMovimientosFromDepartamento(Departamento departamento);
-        List<Movimiento> GetAllMovimientosFromFecha(DateTime fechaInicio, DateTime fechaFinal);
+        List<Movimiento> GetAllMovimientosFromDocumentoId(int idDocumento);
+        List<Movimiento> GetAllMovimientosFromDocumentoCodigo(string codigoDocumento);
+        List<Movimiento> GetAllMovimientosFromDepartamento(int idDepartamento);
+        List<Movimiento> GetAllMovimientosFromFecha(int idDepartamento, DateTime fechaInicio, DateTime fechaFinal);
         
-        Movimiento GetMovimiento(Documento documento);
+        Movimiento GetMovimiento(int idDocumento);
 
         void InsertMovimiento(Movimiento movimiento);
     }

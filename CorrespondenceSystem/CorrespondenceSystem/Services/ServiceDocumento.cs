@@ -26,42 +26,46 @@ namespace CorrespondenceSystem.Services
 
         public List<Documento> GetAllDocumentos()
         {
-            throw new NotImplementedException();
+            return _repository.GetAll().ToList();
         }
 
-        public List<Documento> GetAllDocumentosByFieldAndDate(string campo, DateTime fechaInicio, DateTime fechaFinal)
-        {
-            throw new NotImplementedException();
-        }
 
         public List<Documento> GetAllDocumentosByStatus(string status)
         {
             throw new NotImplementedException();
         }
 
-        public List<Documento> GetAllDocumentosByDepartamento(Departamento departamento)
+        public List<Documento> GetAllDocumentosByDepartamento(int idDepartamento)
         {
-            throw new NotImplementedException();
+            return _repository.GetAll(x => x.departamento.id == idDepartamento).ToList();
+        }
+
+        public List<Documento> GetAllDocumentosByDepartamento(int idDepartamento, DateTime fechaInicio, DateTime fechaFinal)
+        {
+            return _repository.GetAll(x => x.departamento.id == idDepartamento && 
+                x.fechaRegistroUsuario >= fechaInicio && 
+                x.fechaRegistroUsuario <= fechaFinal)
+                .ToList();
         }
 
         public Documento GetDocumentoByCodigo(string codigo)
         {
-            throw new NotImplementedException();
+            return _repository.Get(x => x.codigo.Equals(codigo));
         }
 
         public Documento GetDocumentoById(int id)
         {
-            throw new NotImplementedException();
+            return _repository.Get(x => x.id == id);
         }
 
         public void InsertDocumento(Documento documento)
         {
-            throw new NotImplementedException();
+            _repository.Insert(documento);
         }
 
         public void UpdateDocumento(Documento documento)
         {
-            throw new NotImplementedException();
+            _repository.Update(documento);
         }
 
         public void UpdateStatus(Documento documento)

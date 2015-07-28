@@ -9,9 +9,9 @@ namespace CorrespondenceSystem.Interfaces
     public interface IServiceDocumento
     {
         List<Documento> GetAllDocumentos();
-        List<Documento> GetAllDocumentosByFieldAndDate(string campo, DateTime fechaInicio, DateTime fechaFinal);
         List<Documento> GetAllDocumentosByStatus(string status);
-        List<Documento> GetAllDocumentosByDepartamento(Departamento departamento);
+        List<Documento> GetAllDocumentosByDepartamento(int idDepartamento);
+        List<Documento> GetAllDocumentosByDepartamento(int idDepartamento, DateTime fechaInicio, DateTime fechaFinal);
 
         Documento GetDocumentoByCodigo(string codigo);
         Documento GetDocumentoById(int id);
