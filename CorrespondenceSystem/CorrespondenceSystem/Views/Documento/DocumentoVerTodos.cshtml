@@ -1,5 +1,6 @@
 ﻿@{
     ViewBag.Title = "Documentos Registrados";
+    
 }
 
 <div class="row">
@@ -16,6 +17,17 @@
                         <th>Fecha del Documento</th>
                     </tr>
                     </thead>
+                    <tbody>
+                    @foreach (var Documento in @Model)
+                    {
+                        <tr>
+                            <td>@Documento.codigo</td>
+                            <td>@Documento.asunto</td>
+                            <td>@Documento.departamento.descripcion</td>
+                            <td>@Documento.fechaCreacionUsuario</td>
+                        </tr>
+                    }
+                    </tbody>
                 </table>
             </div>
             <div class="panel-footer">

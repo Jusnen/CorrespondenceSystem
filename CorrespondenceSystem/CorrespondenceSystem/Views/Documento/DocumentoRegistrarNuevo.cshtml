@@ -1,47 +1,57 @@
-﻿
+﻿@using System.Web.UI.HtmlControls
+@using CorrespondenceSystem.ViewModel.Documento
+@model CorrespondenceSystem.ViewModel.Documento.DocumentoCrearViewModel
 @{
     ViewBag.Title = "Registrar Nuevo Documento";
 }
 
+
+@using(Html.BeginForm("Nuevo", "Documento"))
+{ 
+ 
+ 
+
 <div class="row">
     <div class="col-md-4 form-group">
         <div>
-            <label for="txt-noOficio">No. de Oficio</label>
-            <input id="txt-noOficio" type="text" class="form-control" placeholder="Numero de Oficio">
+            @Html.LabelFor(m => m.noOficio)
+            @Html.TextBoxFor(m => m.noOficio, new {@class = "form-control", @placeholder = "Numero de Oficio"})
         </div>
     </div>
     <div class="col-md-4 form-group">
         <div>
-            <label for="txt-fechaDocumento">Fecha del Documento</label>
-            <input type="text" id="txt-fechaDocumento" class="form-control datepicker" placeholder="Fecha del Documento">
+            @Html.LabelFor(m => m.fechaDocumento)
+            @Html.TextBoxFor(m => m.fechaDocumento, new {@class = "form-control datepicker", @placeholder = "Fecha del Documento"})
         </div>
     </div>
     <div class="col-md-4 form-group">
-        <label for="select-regional">Regional</label>
-        <select id="select-regional" class="form-control">
-            
-        </select>
+        @Html.LabelFor(m => m.regional)
+        @Html.DropDownListFor(m => m.regional,
+            (Model.ddlRegional), new {@class = "form-control"})
+
     </div>
 </div>
 <div class="row">
     <div class="col-md-12 form-group">
-        <label for="txt-asunto">Asunto</label>
-        <input type="text" class="form-control" id="txt-asunto" placeholder="Asunto del Documento">
+        @Html.LabelFor(m => m.asunto)
+        @Html.TextBoxFor(m => m.asunto, new {@class = "form-control", @placeholder = "Asunto del Documento"})
     </div>
 </div>
 <div class="row">
     <div class="col-md-4 form-group">
-        <label for="txt-fechaRecibido">Fecha Recibido</label>
-        <input type="text" id="txt-fechaRecibido" class="form-control datepicker" placeholder="Fecha Recibido el Documento">
+        @Html.LabelFor(m => m.fechaRecibido)
+        @Html.TextBoxFor(m => m.fechaRecibido, new {@class = "form-control datepicker", @placeholder = "Fecha Recibido el Documento"})
     </div>
     <div class="col-md-6 col-md-offset-2 form-group">
-        <label for="select-destinatarios">Destinatarios</label>
-        <select id="select-destinatarios" class="form-control">
-            
-        </select>
+        
+        @Html.LabelFor(m => m.idDepartamento)
+        @Html.DropDownListFor(m => m.idDepartamento,
+            (Model.ddlDestinatarios), new {@class = "form-control"})
+        
         <select id="select-destinatarios-multiple" class="form-control" multiple>
-            
+
         </select>
+        
     </div>
 </div>
 <div class="row">
@@ -49,3 +59,5 @@
         <button type="submit" class="btn btn-primary btn-block btn-lg">Registrar</button>
     </div>
 </div>
+
+}

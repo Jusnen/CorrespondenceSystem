@@ -51,6 +51,16 @@
                         <th>Fecha Del Documento</th>
                     </tr>
                     </thead>
+                    <tbody>
+                    @foreach (var Documento in @Model)
+                    {
+                        <tr>
+                            <td>@Documento.codigo</td>
+                            <td>@Documento.asunto</td>
+                            <td>@Documento.fechaCreacionUsuario</td>
+                        </tr>
+                    }
+                    </tbody>
                 </table>
             </div>
             <div class="panel-footer"><button class="btn btn-info " id="btn-refrescar">Refrescar</button>
