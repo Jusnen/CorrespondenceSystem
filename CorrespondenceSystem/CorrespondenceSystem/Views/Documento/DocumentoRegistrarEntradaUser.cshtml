@@ -1,28 +1,51 @@
-﻿@{
+﻿
+@{
     ViewBag.Title = "Registrar Entrada";
 }
 
 <div class="row">
     <div class="col-md-3 form-group">
-        <label for="txt-codDocumento">Codigo del Documento</label>
-        <input type="text" id="txt-codDocumento" class="form-control" placeholder="Codigo del Documento">
+        <label for="txt-noOficio">No. de Oficio</label>
+        <input type="text" id="txt-noOficio" class="form-control soloLectura" placeholder="Codigo del Documento" >
     </div>
     <div class="col-md-3 form-group">
-        <label for="txt-fechaEntrada">Fecha de Entrada</label>
-        <input type="text" id="txt-fechaEntrada" class="form-control datepicker" placeholder="Fecha de Entrada">
+        <label for="txt-fechaRecibido">Fecha Recibido</label>
+        <input type="text" id="txt-fechaRecibido" class="form-control datepicker" placeholder="Fecha Recibido" >
     </div>
     <div class="col-md-3 form-group">
         <label for="select-remitente">Remitente</label>
-        <select name="" id="select-remitente" class="form-control">
-            <option value="1">Tecnologia</option>
-            <option value="2">Opreaciones</option>
-        </select>
+        <input type="text" id="select-remitente" class="form-control soloLectura" placeholder="Remitente">
+    </div>
+    <div class="col-md-3 form-group">
+        <label for="select-regional">Regional del Documento</label>
+        <input type="text" id="select-regional" class="form-control soloLectura" placeholder="Regional del Documento">
+
     </div>
 </div>
 <div class="row">
     <div class="col-md-12 form-group">
         <label for="txt-asunto">Asunto</label>
-        <input type="text" id="txt-asunto" placeholder="Asunto del Documento" class="form-control">
+        <input type="text" id="txt-asunto" placeholder="Asunto del Documento" class="form-control soloLectura">
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-info">
+            <div class="panel-heading">Documentos</div>
+            <div class="panel-body">
+                <table id="table-documents" class="table table-striped table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th>No. de Oficio</th>
+                        <th>Asunto</th>
+                        <th>Fecha Del Documento</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="panel-footer"><button class="btn btn-info " id="btn-refrescar">Refrescar</button>
+            </div>
+        </div>
     </div>
 </div>
 <div class="row">
@@ -32,3 +55,4 @@
         </button>
     </div>
 </div>
+

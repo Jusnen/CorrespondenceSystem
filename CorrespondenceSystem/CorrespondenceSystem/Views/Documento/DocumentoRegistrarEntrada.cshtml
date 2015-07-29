@@ -1,41 +1,64 @@
-﻿@{
+﻿
+@{
     ViewBag.Title = "Registrar Entrada";
 }
 
 <div class="row">
     <div class="col-md-4 form-group">
+        <label for="select-tipoEntrada">Tipo de Entrada</label>
+        <select name="" id="select-tipoEntrada" class="form-control">
+            <option value="1">Devolucion</option>
+            <option value="2">Correcion</option>
+            <option value="3">Seguimiento</option>
+        </select>
+</div>
+    <div class="col-md-4 form-group">
         <label for="select-tipoRemitente">Tipo de Remitente</label>
-        <select name="" id="select-tipoRemitente" class="form-control">
-            <option value="1">Regional</option>
-            <option value="2">Departamento</option>
-        </select>
+        <input type="text" id="select-tipoRemitente" class="form-control soloLectura" placeholder="Tipo de Remitente">
+            
     </div>
-    <div class="col-md-5 form-group">
+    <div class="col-md-4 form-group">
         <label for="select-remitente">Remitente</label>
-        <select name="" id="select-remitente" class="form-control">
-            <option value="1">Tecnologia</option>
-            <option value="2">Del Valle</option>
-        </select>
+        <input type="text" id="select-remitente" class="form-control soloLectura" placeholder="Remitente">
     </div>
-    <div class="col-md-3 form-group"></div>
 </div>
 <div class="row">
-    <div class="col-md-3 form-group">
-        <label for="txt-codDocumento">Codigo del Documento</label>
-        <input type="text" id="txt-codDocumento" placeholder="Codigo del Documento" class="form-control">
+    <div class="col-md-4 form-group">
+        <label for="txt-noOficio">No. de Oficio</label>
+        <input type="text" id="txt-noOficio" placeholder="Numero de Oficio" class="form-control soloLectura">
     </div>
-    <div class="col-md-3 form-group">
-        <label for="select-regional">Regional</label>
-        <select name="" id="select-regional" class="form-control">
-            <option value="1">Del Valle</option>
-            <option value="2">DN</option>
-        </select>
+    <div class="col-md-4 form-group">
+        <label for="select-regional">Regional del Documento</label>
+        <input type="text" id="select-regional" class="form-control soloLectura" placeholder="Regional del Documento">
+
     </div>
-    <div class="col-md-3 form-group">
-        <label for="txt-fechaEntrada">Fecha de Entrada</label>
-        <input type="text" id="txt-fechaEntrada" placeholder="Fecha de Entrada" class="form-control datepicker">
+    <div class="col-md-4 form-group">
+        <label for="txt-fechaRecibido">Fecha Recibido</label>
+        <input type="text" id="txt-fechaRecibido" class="form-control datepicker" placeholder="Fecha Recibido" >
     </div>
 </div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-info">
+            <div class="panel-heading">Documentos</div>
+            <div class="panel-body">
+                <table id="table-documents" class="table table-striped table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th>No. de Oficio</th>
+                        <th>Asunto</th>
+                        <th>Fecha Del Documento</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="panel-footer"><button class="btn btn-info " id="btn-refrescar">Refrescar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="row">
     <div class="col-md-2 col-md-offset-10">
         <button type="submit" class="btn btn-primary btn-block btn-lg">
@@ -43,3 +66,4 @@
         </button>
     </div>
 </div>
+
