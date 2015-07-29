@@ -34,6 +34,11 @@ namespace CorrespondenceSystem.Services
             throw new NotImplementedException();
         }
 
+        public List<Documento> GetAllDocumentosByTipoDepartamento(int idTipoDepartamento)
+        {
+            return _repository.GetAll(x => x.departamento.tipoDepartamento.id == idTipoDepartamento).ToList();
+        }
+
         public List<Documento> GetAllDocumentosByDepartamento(int idDepartamento)
         {
             return _repository.GetAll(x => x.departamento.id == idDepartamento).ToList();
