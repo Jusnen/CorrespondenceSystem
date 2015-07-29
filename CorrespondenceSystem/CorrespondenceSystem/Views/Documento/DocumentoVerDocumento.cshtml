@@ -1,16 +1,16 @@
 ﻿
 @{
-    ViewBag.Title = "Historial Por Archivo";
+    ViewBag.Title = "Datos del Documento";
 }
 
 <div class="row">
     <div class="col-md-4 form-group">
-        <label for="txt-codDocumento">Codigo</label>
-        <input type="text" id="txt-codDocumento" class="form-control" placeholder="Codigo del Documento">           
+        <label for="txt-noOficio">No. de Oficio</label>
+        <input type="text" id="txt-noOficio" class="form-control" placeholder="Numero de oficio">           
     </div>                                                                       
     <div class="col-md-4 form-group">                                            
-        <label for="txt-fechaCreacion">Fecha Creacion</label>                    
-        <input type="text" id="txt-fechaCreacion" class="form-control datepicker" placeholder="Fecha de Creacion">          
+        <label for="txt-fechaDocumento">Fecha del Documento</label>                    
+        <input type="text" id="txt-fechaDocumento" class="form-control datepicker" placeholder="Fecha del Documento">          
     </div>                                                                       
     <div class="col-md-4 form-group">                                            
         <label for="txt-fechaRegistrado">Fecha Registrado</label>                
@@ -19,8 +19,8 @@
 </div>                                                                                                                                                      
 <div class="row">                                                                
     <div class="col-md-4 form-group">                                            
-        <label for="txt-remitenteCreador">Remitente Creador</label>              
-        <input type="text" id="txt-remitenteCreador" class="form-control" placeholder="Creador del Documento">
+        <label for="txt-regional">Regionial</label>              
+        <input type="text" id="txt-regional" class="form-control" placeholder="Regional del Documento">
     </div>
     <div class="col-md-4 form-group">
         <label for="txt-estadoActual">Estador Actual</label>
@@ -45,7 +45,6 @@
                         <th>Destinatario</th>
                         <th>Movimiento</th>
                         <th>Fecha del Movimiento</th>
-                        <th>Mensajero</th>
                     </tr>
                     </thead>
                 </table>
