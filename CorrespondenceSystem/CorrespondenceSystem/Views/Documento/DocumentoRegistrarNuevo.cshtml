@@ -1,63 +1,100 @@
-﻿@using System.Web.UI.HtmlControls
-@using CorrespondenceSystem.ViewModel.Documento
-@model CorrespondenceSystem.ViewModel.Documento.DocumentoCrearViewModel
+﻿<script src="~/App_Script/Documento/JqueryRegistrarNuevo.js"></script>
+
+@using CorrespondenceSystem.DomainClasses
+@model CorrespondenceSystem.ViewModel.Documento.DocumentoNuevoViewModel
 @{
     ViewBag.Title = "Registrar Nuevo Documento";
-}
 
 
-@using(Html.BeginForm("Nuevo", "Documento"))
-{ 
- 
- 
+    AjaxOptions ajaxOpcion = new AjaxOptions
+    {
+        OnBegin = "onBeginFunction",
+        OnSuccess = "OnSuccessFunction",
+        OnFailure = "OnFailureFunction"
 
-<div class="row">
-    <div class="col-md-4 form-group">
-        <div>
-            @Html.LabelFor(m => m.noOficio)
-            @Html.TextBoxFor(m => m.noOficio, new {@class = "form-control", @placeholder = "Numero de Oficio"})
+    };
+    
+    
+    }
+
+
+
+<div class="alert alert-success" id="AlertSuccess" style="display: none">
+    
+</div>
+
+<div id="DocumentoRegistrarNuevo">
+    @using (Ajax.BeginForm("Nuevo", "Documento", ajaxOpcion))
+    {
+
+
+
+        <div class="row">
+            <div class="col-md-4 form-group">
+                <div>
+                    @Html.LabelFor(m => m.noOficio)
+                    @Html.TextBoxFor(m => m.noOficio, new {@class = "form-control", @placeholder = "Numero de Oficio"})
+                </div>
+            </div>
+            <div class="col-md-4 form-group">
+                <div>
+                    @Html.LabelFor(m => m.fechaDocumento)
+                    @Html.TextBoxFor(m => m.fechaDocumento, new {@class = "form-control datepicker", @placeholder = "Fecha del Documento"})
+                </div>
+            </div>
+            <div class="col-md-4 form-group">
+                @Html.LabelFor(m => m.regional)
+                @Html.DropDownListFor(m => m.regional,
+                    (Model.ddlRegional), new
+                    {
+                        @class = "form-control selectpicker show-menu-arrow",
+                        @title = "Seleccione",
+                        @multiple = "multiple",
+                        @data_max_options = "1"
+                    })
+
+            </div>
         </div>
-    </div>
-    <div class="col-md-4 form-group">
-        <div>
-            @Html.LabelFor(m => m.fechaDocumento)
-            @Html.TextBoxFor(m => m.fechaDocumento, new {@class = "form-control datepicker", @placeholder = "Fecha del Documento"})
+        <div class="row">
+            <div class="col-md-12 form-group">
+                @Html.LabelFor(m => m.asunto)
+                @Html.TextBoxFor(m => m.asunto, new
+                {
+                    @class = "form-control",
+                    @placeholder = "Asunto del Documento",
+                })
+            </div>
         </div>
-    </div>
-    <div class="col-md-4 form-group">
-        @Html.LabelFor(m => m.regional)
-        @Html.DropDownListFor(m => m.regional,
-            (Model.ddlRegional), new {@class = "form-control"})
+        <div class="row">
+            <div class="col-md-4 form-group">
+                @Html.LabelFor(m => m.fechaRecibido)
+                @Html.TextBoxFor(m => m.fechaRecibido, new {@class = "form-control datepicker", @placeholder = "Fecha Recibido el Documento"})
+            </div>
+            <div class="col-md-6 col-md-offset-2 form-group">
 
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-12 form-group">
-        @Html.LabelFor(m => m.asunto)
-        @Html.TextBoxFor(m => m.asunto, new {@class = "form-control", @placeholder = "Asunto del Documento"})
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-4 form-group">
-        @Html.LabelFor(m => m.fechaRecibido)
-        @Html.TextBoxFor(m => m.fechaRecibido, new {@class = "form-control datepicker", @placeholder = "Fecha Recibido el Documento"})
-    </div>
-    <div class="col-md-6 col-md-offset-2 form-group">
-        
-        @Html.LabelFor(m => m.idDepartamento)
-        @Html.DropDownListFor(m => m.idDepartamento,
-            (Model.ddlDestinatarios), new {@class = "form-control"})
-        
-        <select id="select-destinatarios-multiple" class="form-control" multiple>
+                @Html.LabelFor(m => m.idDepartamento)
+                <select class="selectpicker form-control show-menu-arrow" multiple data-live-search="true">
+                    <optgroup label="Operaciones">
+                        @foreach (Departamento departamento in Model.departamentosOpreaciones)
+                        {
+                            <option value="@departamento.id">@departamento.descripcion</option>
+                        }
+                    </optgroup>
+                    <optgroup label="Departamento">
+                        @foreach (Departamento departamento in Model.departamentosInternos)
+                        {
+                            <option value="@departamento.id">@departamento.descripcion</option>
+                        }
+                    </optgroup>
+                </select>
 
-        </select>
-        
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-2 col-md-offset-10">
-        <button type="submit" class="btn btn-primary btn-block btn-lg">Registrar</button>
-    </div>
-</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2 col-md-offset-10">
+                <button type="submit" class="btn btn-primary btn-block btn-lg">Registrar</button>
+            </div>
+        </div>
 
-}
+    }
+</div>

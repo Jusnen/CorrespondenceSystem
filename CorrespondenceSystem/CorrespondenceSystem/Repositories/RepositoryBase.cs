@@ -47,6 +47,7 @@ namespace CorrespondenceSystem.Repositories
         public void Update(TEntity entity)
         {
             Session.Update(entity);
+            Session.Flush();
         }
 
         /// Deletes an entity.

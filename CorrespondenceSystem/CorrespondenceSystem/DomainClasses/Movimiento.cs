@@ -23,7 +23,7 @@ namespace CorrespondenceSystem.DomainClasses
         public virtual Usuario usuario { get; set; }
         public virtual DateTime fecha { get; set; }
         public virtual DateTime fechaCreacion { get; set; }
-        public virtual DateTime fechaModificacion { get; set; }
+        public virtual DateTime? fechaModificacion { get; set; }
         public virtual int usuarioCreacion { get; set; }
         public virtual int usuarioModificacion { get; set; }
     }

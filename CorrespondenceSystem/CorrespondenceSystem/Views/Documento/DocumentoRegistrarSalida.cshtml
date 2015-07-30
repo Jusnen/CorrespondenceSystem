@@ -1,4 +1,4 @@
-﻿
+﻿@model CorrespondenceSystem.ViewModel.Documento.DocumentoSalidaViewModel
 @{
     ViewBag.Title = "Registrar Salida";
 }
@@ -36,6 +36,7 @@
                         <th>Asunto</th>
                         <th>Fecha Del Documento</th>
                         <th>Regional</th>
+                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -46,6 +47,7 @@
                             <td>@Documento.asunto</td>
                             <td>@Documento.fechaCreacionUsuario</td>
                             <td>@Documento.departamento.descripcion</td>
+                            <td><button type="button" class="btn btn-primary btn-addDocumentoSalida"><i class="glyphicon glyphicon-plus"></i></button></td>
                         </tr>
                     }
                     </tbody>

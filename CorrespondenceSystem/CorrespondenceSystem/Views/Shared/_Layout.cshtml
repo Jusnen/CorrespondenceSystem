@@ -29,11 +29,17 @@
     <!-- Bootstrap DatePicker CSS -->
     <link href="~/Content/bootstrap-datepicker3.css" rel="stylesheet"/>
 
+    <!-- Boostrap Select CSS -->
+    <link href="~/Content/bootstrap-select.min.css" rel="stylesheet"/>
+
     <!-- jQuery -->
     <script src="~/Scripts/jquery-2.1.4.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="~/Scripts/bootstrap.min.js"></script>
+
+    <!-- Boostrap Select JavaScript -->
+    <script src="~/Scripts/bootstrap-select.min.js"></script>
 
     <!-- Metis Menu Plugin JavaScript -->
     <script src="~/Scripts/metisMenu.min.js"></script>
@@ -50,8 +56,11 @@
     <!-- BootstrapDatePicker -->
     <script src="~/Scripts/bootstrap-datepicker.min.js"></script>
 
-    <!-- Custom JQuery File -->
-    <script src="~/App_Script/JqueryCustom.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+    
+
+
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -79,56 +88,32 @@
 <!-- /.navbar-header -->
 
 <ul class="nav navbar-top-links navbar-right">
-<li class="dropdown">
-    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-        <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
-    </a>
-    <ul class="dropdown-menu dropdown-messages">
-        <li>
-            <a href="#">
-                <div>
-                    <strong>John Smith</strong>
-                    <span class="pull-right text-muted">
+    <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
+        </a>
+        <ul class="dropdown-menu dropdown-messages">
+            <li>
+                <a href="#">
+                    <div>
+                        <strong>John Smith</strong>
+                        <span class="pull-right text-muted">
                                         <em>Yesterday</em>
                                     </span>
-                </div>
-                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
-            </a>
-        </li>
-        <li class="divider"></li>
-        <li>
-            <a href="#">
-                <div>
-                    <strong>John Smith</strong>
-                    <span class="pull-right text-muted">
-                                        <em>Yesterday</em>
-                                    </span>
-                </div>
-                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
-            </a>
-        </li>
-        <li class="divider"></li>
-        <li>
-            <a href="#">
-                <div>
-                    <strong>John Smith</strong>
-                    <span class="pull-right text-muted">
-                                        <em>Yesterday</em>
-                                    </span>
-                </div>
-                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
-            </a>
-        </li>
-        <li class="divider"></li>
-        <li>
-            <a class="text-center" href="#">
-                <strong>Read All Messages</strong>
-                <i class="fa fa-angle-right"></i>
-            </a>
-        </li>
-    </ul>
-    <!-- /.dropdown-messages -->
-</li>
+                    </div>
+                    <div>Mensaje</div>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a class="text-center" href="#">
+                    <strong>Read All Messages</strong>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+        <!-- /.dropdown-messages -->
+    </li>
 <!-- /.dropdown -->
 <li class="dropdown">
     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -401,9 +386,16 @@
         $('.datepicker').datepicker({
             format: "dd/mm/yyyy"
         });
+
+        $('.selectpicker').selectpicker({
+            title: "Seleccione"
+        });
+
+        $(".soloLectura").attr('readonly', 'readonly');
+        $(".soloLectura").css('cursor', 'not-allowed');
+
+
     });
 </script>
-
 </body>
-
 </html>
