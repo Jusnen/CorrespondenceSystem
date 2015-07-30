@@ -1,19 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 using CorrespondenceSystem.DomainClasses;
-using CorrespondenceSystem.Services;
 
 namespace CorrespondenceSystem.ViewModel.Documento
 {
-    public class DocumentoCrearViewModel
+    public class DocumentoNuevoViewModel
     {
-        private const string CampoRequerido = "Campo requerido";
-        
+        private const string CampoRequerido = "Campo {0} requerido";
+
         public SelectList ddlRegional { get; set; }
-        public SelectList ddlDestinatarios { get; set; }
+        public List<Departamento> departamentosInternos { get; set; }
+        public List<Departamento> departamentosOpreaciones { get; set; }
+        public List<Departamento> departamentosExternos { get; set; }
 
         [Display(Name = "No. Oficio")]
         [Required(ErrorMessage = CampoRequerido)]
