@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
-using System.Web.UI.HtmlControls;
 using CorrespondenceSystem.DomainClasses;
-using CorrespondenceSystem.Implementations;
-using CorrespondenceSystem.Services;
+using CorrespondenceSystem.Interfaces;
 using CorrespondenceSystem.ViewModel.Documento;
 
 
@@ -12,6 +10,19 @@ namespace CorrespondenceSystem.Controllers
 {
     public class DocumentoController : Controller
     {
+        private readonly IServiceDocumento _serviceDocumento;
+        private readonly IServiceDepartamento _serviceDepartamento;
+        private readonly IServiceMovimiento _serviceMovimiento;
+
+        public DocumentoController(IServiceDocumento serviceDocumento,
+            IServiceDepartamento serviceDepartamento,
+            IServiceMovimiento serviceMovimiento)
+        {
+            _serviceDocumento = serviceDocumento;
+            _serviceDepartamento = serviceDepartamento;
+            _serviceMovimiento = serviceMovimiento;
+        }
+
         //
         //GET: /Documento/
         [HttpGet]
@@ -26,7 +37,14 @@ namespace CorrespondenceSystem.Controllers
         [HttpGet]
         public ActionResult Nuevo()
         {
-            var documentoNuevoViewModel = _documentoNuevoViewModel;
+            var documentoNuevoViewModel = new DocumentoNuevoViewModel();
+            var listaExternos = _serviceDepartamento.GetAllDepartamentosByTipoDepartamento(2);
+
+            documentoNuevoViewModel.ddlRegional = new SelectList(listaExternos, "id", "descripcion");
+            documentoNuevoViewModel.departamentosInternos = _serviceDepartamento.GetAllDepartamentosByTipoDepartamento(1);
+            documentoNuevoViewModel.departamentosOpreaciones =
+                _serviceDepartamento.GetAllDepartamentosByTipoDepartamento(3);
+
             return View("DocumentoRegistrarNuevo", documentoNuevoViewModel);
         }
 
@@ -34,27 +52,31 @@ namespace CorrespondenceSystem.Controllers
         public ActionResult Nuevo(DocumentoNuevoViewModel vm)
         {
 
-            Documento documento = new Documento();
-            documento.codigo = vm.noOficio;
-            documento.fechaCreacionUsuario = DateTime.ParseExact(vm.fechaDocumento, "dd/MM/yyyy", null);
-            documento.departamento.id = vm.regional;
-            documento.asunto = vm.asunto;
-            documento.fechaRegistroUsuario = DateTime.ParseExact(vm.fechaRecibido, "dd/MM/yyyy", null);
+            var documento = new Documento
+            {
+                codigo = vm.noOficio,
+                fechaCreacionUsuario = DateTime.ParseExact(vm.fechaDocumento, "dd/MM/yyyy", null),
+                departamento = {id = vm.regional},
+                asunto = vm.asunto,
+                fechaRegistroUsuario = DateTime.ParseExact(vm.fechaRecibido, "dd/MM/yyyy", null),
+                usuarioCreacion = 2,
+                fechaCreacion = DateTime.Now
+            };
             //documento.destinatarios = vm.destinatarios (CREAR)
-            documento.usuarioCreacion = 2;
-            documento.fechaCreacion = DateTime.Now;
 
-            Movimiento movimiento = new Movimiento();
-            movimiento.documento = documento;
-            movimiento.departamento = documento.departamento;
-            movimiento.fecha = documento.fechaRegistroUsuario;
-            movimiento.tipoMovimiento.id = 1;
-            movimiento.usuario.id = 2;
-            movimiento.usuarioCreacion = 2;
-            movimiento.fechaCreacion = documento.fechaCreacion;
+            var movimiento = new Movimiento
+            {
+                documento = documento,
+                departamento = documento.departamento,
+                fecha = documento.fechaRegistroUsuario,
+                tipoMovimiento = {id = 1},
+                usuario = {id = 2},
+                usuarioCreacion = 2,
+                fechaCreacion = documento.fechaCreacion
+            };
 
-            new ServiceDocumento().InsertDocumento(documento);
-            new ServiceMovimiento().InsertMovimiento(movimiento);
+            _serviceDocumento.InsertDocumento(documento);
+            _serviceMovimiento.InsertMovimiento(movimiento);
             return Json(new
             {
                 Success = true,
@@ -69,25 +91,38 @@ namespace CorrespondenceSystem.Controllers
         [HttpGet]
         public ActionResult Salida()
         {
-            ServiceDocumento serviceDocumento = new ServiceDocumento();
+            var listViewModel = new DocumentoSalidaViewModel();
+            var destinatarios = _serviceDepartamento.GetAllDepartamentosByTipoDepartamento(1);
 
-            var listViewModel = new List<DocumentoViewModel>();
-            DocumentoViewModel doc;
+            listViewModel.destinararios = destinatarios;
+            listViewModel.documentos = _serviceDocumento.GetAllDocumentosByTipoDepartamento(2);
+            listViewModel.ddlDestinatarios = new SelectList(destinatarios, "id", "descripcion");
 
-            var listaDocumento = serviceDocumento.GetAllDocumentosByTipoDepartamento(2);
-
-            foreach (var documento in listaDocumento)
-            {
-                doc = new DocumentoViewModel();
-
-                doc.asunto = documento.asunto;
-                doc.codigo = documento.codigo;
-                doc.fechaCreacionUsuario = documento.fechaCreacionUsuario;
-                doc.departamento = documento.departamento;
-                listViewModel.Add(doc);
-
-            }
             return View("DocumentoRegistrarSalida", listViewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Salida(DocumentoSalidaViewModel vm)
+        {
+
+            var movimiento = new Movimiento
+            {
+                documento = {id = vm.idDocumento},
+                departamento = {id = vm.idDestinatario},
+                fecha = DateTime.Now,
+                fechaCreacion = DateTime.Now,
+                tipoMovimiento = {id = 2},
+                usuario = {id = 2},
+                usuarioCreacion = 2
+            };
+
+            _serviceMovimiento.InsertMovimiento(movimiento);
+
+            return Json(new
+            {
+                Success = true,
+                Message = "Registro guardado correctamente"
+            });
         }
 
         #endregion Salida()
@@ -97,23 +132,16 @@ namespace CorrespondenceSystem.Controllers
         [HttpGet]
         public ActionResult Entrada()
         {
-            ServiceDocumento serviceDocumento = new ServiceDocumento();
+            var listaDocumento = _serviceDocumento.GetAllDocumentosByTipoDepartamento(2);
 
-            var listViewModel = new List<DocumentoViewModel>();
-            DocumentoViewModel doc;
-
-            var listaDocumento = serviceDocumento.GetAllDocumentosByTipoDepartamento(2);
-
-            foreach (var documento in listaDocumento)
+            var listViewModel = listaDocumento.Select(documento => new DocumentoViewModel
             {
-                doc = new DocumentoViewModel();
+                asunto = documento.asunto,
+                codigo = documento.codigo,
+                fechaCreacionUsuario = documento.fechaCreacionUsuario
+            }).ToList();
 
-                doc.asunto = documento.asunto;
-                doc.codigo = documento.codigo;
-                doc.fechaCreacionUsuario = documento.fechaCreacionUsuario;
-                listViewModel.Add(doc);
 
-            }
             return View("DocumentoRegistrarEntrada", listViewModel);
         }
 
@@ -124,22 +152,14 @@ namespace CorrespondenceSystem.Controllers
         [HttpGet]
         public ActionResult EntradaUser()
         {
-            ServiceDocumento serviceDocumento = new ServiceDocumento();
+            var listaDocumento = _serviceDocumento.GetAllDocumentosByDepartamento(4);
 
-            var listViewModel = new List<DocumentoViewModel>();
-            DocumentoViewModel doc;
-            var listaDocumento = serviceDocumento.GetAllDocumentosByDepartamento(4);
-
-            foreach (var documento in listaDocumento)
+            var listViewModel = listaDocumento.Select(documento => new DocumentoViewModel
             {
-                doc = new DocumentoViewModel();
-
-                doc.asunto = documento.asunto;
-                doc.codigo = documento.codigo;
-                doc.fechaCreacionUsuario = documento.fechaCreacionUsuario;
-                listViewModel.Add(doc);
-
-            }
+                asunto = documento.asunto,
+                codigo = documento.codigo,
+                fechaCreacionUsuario = documento.fechaCreacionUsuario
+            }).ToList();
 
             return View("DocumentoRegistrarEntradaUser", listViewModel);
         }
@@ -157,24 +177,15 @@ namespace CorrespondenceSystem.Controllers
         [HttpGet]
         public ActionResult Documentos()
         {
-            ServiceDocumento serviceDocumento = new ServiceDocumento();
+            var listaDocumento = _serviceDocumento.GetAllDocumentosByTipoDepartamento(2);
 
-            var listViewModel = new List<DocumentoViewModel>();
-            DocumentoViewModel doc;
-
-            var listaDocumento = serviceDocumento.GetAllDocumentosByTipoDepartamento(2);
-
-            foreach (var documento in listaDocumento)
+            var listViewModel = listaDocumento.Select(documento => new DocumentoViewModel
             {
-                doc = new DocumentoViewModel();
-
-                doc.departamento = documento.departamento;
-                doc.asunto = documento.asunto;
-                doc.codigo = documento.codigo;
-                doc.fechaCreacionUsuario = documento.fechaCreacionUsuario;
-                listViewModel.Add(doc);
-
-            }
+                departamento = documento.departamento,
+                asunto = documento.asunto,
+                codigo = documento.codigo,
+                fechaCreacionUsuario = documento.fechaCreacionUsuario
+            }).ToList();
 
 
             return View("DocumentoVerTodos", listViewModel);
@@ -182,23 +193,6 @@ namespace CorrespondenceSystem.Controllers
 
         #endregion
 
-
-        private static DocumentoNuevoViewModel _documentoNuevoViewModel
-        {
-            get
-            {
-                DocumentoNuevoViewModel documentoNuevoViewModel = new DocumentoNuevoViewModel();
-
-                List<Departamento> listaInternos = new ServiceDepartamento().GetAllDepartamentosByTipoDepartamento(1);
-                List<Departamento> listaExternos = new ServiceDepartamento().GetAllDepartamentosByTipoDepartamento(2);
-                List<Departamento> listaOperaciones = new ServiceDepartamento().GetAllDepartamentosByTipoDepartamento(3);
-
-                documentoNuevoViewModel.ddlRegional = new SelectList(listaExternos, "id", "descripcion");
-                documentoNuevoViewModel.departamentosInternos = listaInternos;
-                documentoNuevoViewModel.departamentosOpreaciones = listaOperaciones;
-                return documentoNuevoViewModel;
-            }
-        }
 
     }
 }

@@ -11,37 +11,31 @@ namespace CorrespondenceSystem.Services
 {
     public class ServiceMovimiento : IServiceMovimiento
     {
-        private static NHibernateHelper nHibernateHelper;
-        private static ISessionFactory _sessionFactory;
-        private static ISession _session;
-        private readonly IRepository<Movimiento, int> _repository;
+        private readonly IRepository<Movimiento, int> _movimientoRepository;
 
-        public ServiceMovimiento()
+        public ServiceMovimiento(IRepository<Movimiento, int> movimientoRepository)
         {
-            nHibernateHelper = new NHibernateHelper();
-            _sessionFactory = nHibernateHelper.CreateSessionFactory();
-            _session = _sessionFactory.OpenSession();
-            _repository = new RepositoryBase<Movimiento, int>(_session);
+            _movimientoRepository = movimientoRepository;
         }
 
         public List<Movimiento> GetAllMovimientosFromDocumentoId(int idDocumento)
         {
-            return _repository.GetAll(x => x.documento.id == idDocumento).ToList();
+            return _movimientoRepository.GetAll(x => x.documento.id == idDocumento).ToList();
         }
 
         public List<Movimiento> GetAllMovimientosFromDocumentoCodigo(string codigoDocumento)
         {
-            return _repository.GetAll(x => x.documento.codigo == codigoDocumento).ToList();
+            return _movimientoRepository.GetAll(x => x.documento.codigo == codigoDocumento).ToList();
         }
 
         public List<Movimiento> GetAllMovimientosFromDepartamento(int idDepartamento)
         {
-            return _repository.GetAll(x => x.departamento.id == idDepartamento).ToList();
+            return _movimientoRepository.GetAll(x => x.departamento.id == idDepartamento).ToList();
         }
 
         public List<Movimiento> GetAllMovimientosFromFecha(int idDepartamento, DateTime fechaInicio, DateTime fechaFinal)
         {
-            return _repository.GetAll(x => x.departamento.id == idDepartamento &&
+            return _movimientoRepository.GetAll(x => x.departamento.id == idDepartamento &&
                                            x.fecha >= fechaInicio &&
                                            x.fecha <= fechaFinal)
                 .ToList();
@@ -49,12 +43,12 @@ namespace CorrespondenceSystem.Services
 
         public Movimiento GetMovimiento(int idDocumento)
         {
-            return _repository.Get(x => x.documento.id == idDocumento);
+            return _movimientoRepository.Get(x => x.documento.id == idDocumento);
         }
 
         public void InsertMovimiento(Movimiento movimiento)
         {
-            _repository.Insert(movimiento);
+            _movimientoRepository.Insert(movimiento);
         }
     }
 }

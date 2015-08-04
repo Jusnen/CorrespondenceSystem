@@ -3,25 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using CorrespondenceSystem.DomainClasses;
 using CorrespondenceSystem.Interfaces;
-using CorrespondenceSystem.Repositories;
-using MvcGCP.NHibernateHelpers;
-using NHibernate;
 
 namespace CorrespondenceSystem.Services
 {
     public class ServiceDocumento : IServiceDocumento
     {
-        private static NHibernateHelper nHibernateHelper;
-        private static ISessionFactory _sessionFactory;
-        private static ISession _session;
         private readonly IRepository<Documento, int> _repository;
 
-        public ServiceDocumento()
+        public ServiceDocumento(IRepository<Documento, int> documentoRepository )
         {
-            nHibernateHelper = new NHibernateHelper();
-            _sessionFactory = nHibernateHelper.CreateSessionFactory();
-            _session = _sessionFactory.OpenSession();
-            _repository = new RepositoryBase<Documento, int>(_session);
+            _repository = documentoRepository;
+
+            //_sessionFactory = nHibernateHelper.CreateSessionFactory();
+            //_session = _sessionFactory.OpenSession();
+            //_repository = new RepositoryBase<Documento, int>(_session);
         }
 
         public List<Documento> GetAllDocumentos()

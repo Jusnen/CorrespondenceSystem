@@ -1,12 +1,10 @@
-﻿<script src="~/App_Script/Documento/JqueryRegistrarNuevo.js"></script>
-
-@using CorrespondenceSystem.DomainClasses
+﻿@using CorrespondenceSystem.DomainClasses
 @model CorrespondenceSystem.ViewModel.Documento.DocumentoNuevoViewModel
 @{
     ViewBag.Title = "Registrar Nuevo Documento";
 
 
-    AjaxOptions ajaxOpcion = new AjaxOptions
+    AjaxOptions ajaxOptions = new AjaxOptions
     {
         OnBegin = "onBeginFunction",
         OnSuccess = "OnSuccessFunction",
@@ -24,7 +22,7 @@
 </div>
 
 <div id="DocumentoRegistrarNuevo">
-    @using (Ajax.BeginForm("Nuevo", "Documento", ajaxOpcion))
+    @using (Ajax.BeginForm("Nuevo", "Documento", ajaxOptions))
     {
 
 
@@ -61,7 +59,7 @@
                 @Html.TextBoxFor(m => m.asunto, new
                 {
                     @class = "form-control",
-                    @placeholder = "Asunto del Documento",
+                    @placeholder = "Asunto del Documento"
                 })
             </div>
         </div>
@@ -98,3 +96,5 @@
 
     }
 </div>
+
+<script src="~/App_Script/Documento/JqueryRegistrarNuevo.js"></script>

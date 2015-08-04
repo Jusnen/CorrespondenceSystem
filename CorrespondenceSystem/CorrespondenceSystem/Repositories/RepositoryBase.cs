@@ -11,7 +11,7 @@ namespace CorrespondenceSystem.Repositories
     public class RepositoryBase<TEntity, TPrimaryKey> : IRepository<TEntity, TPrimaryKey>
         where TEntity : Entity<TPrimaryKey>
     {
-        protected ISession Session;
+        private readonly ISession Session;
 
         /// Used to get a IQueryable that is used to retrive object from entire table.
         /// IQueryable to be used to select entities from database

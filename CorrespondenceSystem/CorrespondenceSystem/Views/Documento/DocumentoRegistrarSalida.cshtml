@@ -1,83 +1,86 @@
 ﻿@model CorrespondenceSystem.ViewModel.Documento.DocumentoSalidaViewModel
 @{
     ViewBag.Title = "Registrar Salida";
+
+    AjaxOptions ajaxOptions = new AjaxOptions
+    {
+        OnBegin = "onBeginFunction",
+        OnSuccess = "OnSuccessFunction",
+        OnFailure = "OnFailureFunction"
+
+    };
 }
+<div id="DocumentoRegistrarSalida">
+    @using (Ajax.BeginForm("Salida", "Documento", ajaxOptions))
+    {
+        <div class="row">
+            <div class="col-md-3 form-group">
+                @Html.LabelFor(m => m.idDocumento)
+                @Html.TextBoxFor(m => m.idDocumento, new{@id = "txt-idDocumentoHidden",@class="form-control soloLectura",@style="display: none", @placeholder = "Numero de Oficio", @data_id=""})
+                <input type="text" id="txt-noOficio" data-id="" class="form-control soloLectura">
+            </div>
+            <div class="col-md-3 form-group">
 
-<div class="row">
-    <div class="col-md-3 form-group">
-        <label for="txt-noOficio">No. de Oficio</label>
-        <input type="text" id="txt-noOficio" class="form-control soloLectura">
-    </div>
-    <div class="col-md-3 form-group">
-        <label for="select-destinatario">Destinatario</label>
-        <select id="select-destinatario" class="form-control">
-        </select>
-    </div>
-    <div class="col-md-3 form-group">
-        <label></label>
-        <div class="checkbox">
-            <label>
-                <input type="checkbox" id="checkbox-devolucion"/>
-                Devolucion
-            </label>
-        </div>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-md-12">
-        <div class="panel panel-info">
-            <div class="panel-heading">Documentos</div>
-            <div class="panel-body">
-                <table id="table-documents" class="table table-striped table-bordered table-hover">
-                    <thead>
-                    <tr>
-                        <th>No. de Oficio</th>
-                        <th>Asunto</th>
-                        <th>Fecha Del Documento</th>
-                        <th>Regional</th>
-                        <th></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @foreach (var Documento in @Model)
+                @Html.LabelFor(m => m.idDestinatario)
+                @Html.DropDownListFor(m => m.idDestinatario,
+                    (Model.ddlDestinatarios), new
                     {
-                        <tr>
-                            <td>@Documento.codigo</td>
-                            <td>@Documento.asunto</td>
-                            <td>@Documento.fechaCreacionUsuario</td>
-                            <td>@Documento.departamento.descripcion</td>
-                            <td><button type="button" class="btn btn-primary btn-addDocumentoSalida"><i class="glyphicon glyphicon-plus"></i></button></td>
-                        </tr>
-                    }
-                    </tbody>
-                </table>
+                        @class = "form-control selectpicker show-menu-arrow",
+                        @title = "Seleccione",
+                        @multiple = "multiple",
+                        @data_max_options = "1"
+                    })
             </div>
-            <div class="panel-footer"><button class="btn btn-info " id="btn-refrescar">Refrescar</button>
+            <div class="col-md-3 form-group">
+                <label></label>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" id="checkbox-devolucion"/>
+                        Devolucion
+                    </label>
+                </div>
             </div>
         </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-2 col-md-offset-10">
-        <button type="submit" class="btn btn-primary btn-block btn-lg">Registrar</button>
-    </div>
-</div>
 
-@*<div class="row">
-    <div class="col-md-2 form-group">
-        <label></label>
-        <button class="btn btn-info btn-block" id="btn-refrescar">Refrescar</button>
-    </div>
-    <div class="col-md-3 form-group">
-        <label for="select-filtrarPor">Filtrar Por</label>
-        <select name="" id="select-filtrarPor" class="form-control">
-            <option value="" disable selected>Casa</option>
-            <option value="">Casa</option>
-        </select>
-    </div>
-    <div class="col-md-3 form-group">
-        <label></label>
-        <input type="text" placeholder="Texto para filtrar" class="form-control" id="txt-filtrar">
-    </div>
-</div>*@
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-info">
+                    <div class="panel-heading">Documentos</div>
+                    <div class="panel-body">
+                        <table id="table-documents" class="table table-striped table-bordered table-hover">
+                            <thead>
+                            <tr>
+                                <th>No. de Oficio</th>
+                                <th>Asunto</th>
+                                <th>Fecha Del Documento</th>
+                                <th>Regional</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach (var documento in @Model.documentos)
+                            {
+                                <tr>
+                                    <td class="codigoDocumento">@documento.codigo</td>
+                                    <td>@documento.asunto</td>
+                                    <td>@documento.fechaCreacionUsuario</td>
+                                    <td>@documento.departamento.descripcion</td>
+                                    <td><button type="button" data-id="@documento.id" data-cod="@documento.codigo" class="btn btn-primary btn-addDocumentoSalida"><i class="glyphicon glyphicon-plus"></i></button></td>
+                                </tr>
+                            }
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="panel-footer"><button class="btn btn-info " id="btn-refrescar">Refrescar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2 col-md-offset-10">
+                <button type="submit" class="btn btn-primary btn-block btn-lg">Registrar</button>
+            </div>
+        </div>
+    }
+</div>
+<script src="~/App_Script/Documento/JqueryRegistrarSalida.js"></script>

@@ -9,29 +9,31 @@ using NHibernate.Tool.hbm2ddl;
 
 namespace MvcGCP.NHibernateHelpers
 {
-    public class NHibernateHelper
+    public static class NHibernateHelper
     {
-        private readonly string _connectionString;
-        private ISessionFactory _sessionFactory;
+        private static string _connectionString;
+        private static ISessionFactory _sessionFactory;
 
-        public NHibernateHelper()
-        {
-            // _connectionString = @"Data Source=CODE-PC\DANTESQL;Initial Catalog=GCP;Trusted_Connection=True";
+        //public NHibernateHelper()
+        //{
+        //    // _connectionString = @"Data Source=CODE-PC\DANTESQL;Initial Catalog=GCP;Trusted_Connection=True";
 
-            //  _connectionString = @"Data Source=DES-06-PC\MSSQLSERVER02;Initial Catalog=GCP;Trusted_Connection=True";
+        //    //  _connectionString = @"Data Source=DES-06-PC\MSSQLSERVER02;Initial Catalog=GCP;Trusted_Connection=True";
 
-            _connectionString = ConfigurationManager.ConnectionStrings["LocalWork"].ToString();
+           
 
-            //@"Data Source=SOL-DS-01;Initial Catalog=GCP;Trusted_Connection=True";
-        }
+        //    //@"Data Source=SOL-DS-01;Initial Catalog=GCP;Trusted_Connection=True";
+        //}
 
-        public ISessionFactory SessionFactory
+        public static ISessionFactory SessionFactory
         {
             get { return _sessionFactory ?? (_sessionFactory = CreateSessionFactory()); }
         }
 
-        public ISessionFactory CreateSessionFactory()
+        public static ISessionFactory CreateSessionFactory()
         {
+            _connectionString = ConfigurationManager.ConnectionStrings["LocalWork"].ToString();
+
             var configuration = Fluently.Configure()
                 .Database(MsSqlConfiguration.MsSql2008
                     .ConnectionString(_connectionString)
