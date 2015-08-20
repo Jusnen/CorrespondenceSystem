@@ -19,11 +19,11 @@ namespace CorrespondenceSystem
 
         private static void InitializeContainer(ServiceContainer container)
         {
-            container.Register(factory => NHibernateHelper.CreateSessionFactory().GetCurrentSession());
-            container.Register(typeof(RepositoryBase<,>), typeof(IRepository<,>), new PerScopeLifetime());
-            container.Register(typeof(ServiceDocumento), typeof(IServiceDocumento));
-            container.Register(typeof(ServiceDepartamento), typeof(IServiceDepartamento));
-            container.Register(typeof(ServiceMovimiento), typeof(IServiceMovimiento));
+            container.Register(factory => NHibernateHelper.CreateSessionFactory().OpenSession());
+            container.Register<IServiceDocumento, ServiceDocumento>();
+            container.Register(typeof(IRepository<,>), typeof(RepositoryBase<,>));
+            container.Register<IServiceDepartamento, ServiceDepartamento>();
+            container.Register<IServiceMovimiento, ServiceMovimiento>();
         }
     }
 }

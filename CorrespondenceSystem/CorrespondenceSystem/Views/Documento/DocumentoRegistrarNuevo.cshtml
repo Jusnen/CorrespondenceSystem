@@ -1,55 +1,68 @@
 ﻿@using CorrespondenceSystem.DomainClasses
 @model CorrespondenceSystem.ViewModel.Documento.DocumentoNuevoViewModel
 @{
-    ViewBag.Title = "Registrar Nuevo Documento";
+        ViewBag.Title = "Registrar Nuevo Documento";
+ }
 
-
-    AjaxOptions ajaxOptions = new AjaxOptions
+    @*AjaxOptions ajaxOptions = new AjaxOptions
     {
         OnBegin = "onBeginFunction",
         OnSuccess = "OnSuccessFunction",
         OnFailure = "OnFailureFunction"
 
-    };
-    
-    
-    }
+    };*@
 
 
+@*Esta era la forma en que lo re-implemente 
+    
+    @using (Ajax.BeginForm("Nuevo", "Documento", new AjaxOptions
+{
+    OnBegin = "onBeginFunction",
+    OnSuccess = "OnSuccessFunction",
+    OnFailure = "OnFailureFunction"
+}))
+    Hasta aquí
+    *@
 
 <div class="alert alert-success" id="AlertSuccess" style="display: none">
     
 </div>
-
+    
 <div id="DocumentoRegistrarNuevo">
-    @using (Ajax.BeginForm("Nuevo", "Documento", ajaxOptions))
+    @*@using (Ajax.BeginForm("Nuevo", "Documento", new AjaxOptions))
+    {*@ 
+
+    @using (Ajax.BeginForm("Nuevo", "Documento", 
+        new AjaxOptions
     {
-
-
-
+        OnBegin = "onBeginFunction",
+        OnSuccess = "OnSuccessFunction",
+        OnFailure = "OnFailureFunction"
+    }))
+    { 
         <div class="row">
             <div class="col-md-4 form-group">
                 <div>
                     @Html.LabelFor(m => m.noOficio)
-                    @Html.TextBoxFor(m => m.noOficio, new {@class = "form-control", @placeholder = "Numero de Oficio"})
+                    @Html.TextBoxFor(m => m.noOficio, new { @class = "form-control", @placeholder = "Numero de Oficio" })
                 </div>
             </div>
             <div class="col-md-4 form-group">
                 <div>
                     @Html.LabelFor(m => m.fechaDocumento)
-                    @Html.TextBoxFor(m => m.fechaDocumento, new {@class = "form-control datepicker", @placeholder = "Fecha del Documento"})
+                    @Html.TextBoxFor(m => m.fechaDocumento, new { @class = "form-control datepicker", @placeholder = "Fecha del Documento" })
                 </div>
             </div>
             <div class="col-md-4 form-group">
                 @Html.LabelFor(m => m.regional)
                 @Html.DropDownListFor(m => m.regional,
-                    (Model.ddlRegional), new
-                    {
-                        @class = "form-control selectpicker show-menu-arrow",
-                        @title = "Seleccione",
-                        @multiple = "multiple",
-                        @data_max_options = "1"
-                    })
+             (Model.ddlRegional), new
+             {
+                 @class = "form-control selectpicker show-menu-arrow",
+                 @title = "Seleccione",
+                 @multiple = "multiple",
+                 @data_max_options = "1"
+             })
 
             </div>
         </div>
@@ -57,16 +70,16 @@
             <div class="col-md-12 form-group">
                 @Html.LabelFor(m => m.asunto)
                 @Html.TextBoxFor(m => m.asunto, new
-                {
-                    @class = "form-control",
-                    @placeholder = "Asunto del Documento"
-                })
+           {
+               @class = "form-control",
+               @placeholder = "Asunto del Documento"
+           })
             </div>
         </div>
         <div class="row">
             <div class="col-md-4 form-group">
                 @Html.LabelFor(m => m.fechaRecibido)
-                @Html.TextBoxFor(m => m.fechaRecibido, new {@class = "form-control datepicker", @placeholder = "Fecha Recibido el Documento"})
+                @Html.TextBoxFor(m => m.fechaRecibido, new { @class = "form-control datepicker", @placeholder = "Fecha Recibido el Documento" })
             </div>
             <div class="col-md-6 col-md-offset-2 form-group">
 
@@ -95,6 +108,7 @@
         </div>
 
     }
+
 </div>
 
 <script src="~/App_Script/Documento/JqueryRegistrarNuevo.js"></script>

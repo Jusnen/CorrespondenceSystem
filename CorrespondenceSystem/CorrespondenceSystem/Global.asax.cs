@@ -8,9 +8,11 @@ namespace CorrespondenceSystem
     {
         protected void Application_Start()
         {
-            InjectorInitializer.Initialize();
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+            InjectorInitializer.Initialize();
+
         }
     }
 }

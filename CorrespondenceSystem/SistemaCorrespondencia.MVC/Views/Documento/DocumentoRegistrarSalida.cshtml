@@ -1,0 +1,86 @@
+﻿@model SistemaCorrespondencia.MVC.ViewModel.Documento.DocumentoSalidaViewModel
+@{
+    ViewBag.Title = "Registrar Salida";
+
+    AjaxOptions ajaxOptions = new AjaxOptions
+    {
+        OnBegin = "onBeginFunction",
+        OnSuccess = "OnSuccessFunction",
+        OnFailure = "OnFailureFunction"
+
+    };
+}
+<div id="DocumentoRegistrarSalida">
+    @using (Ajax.BeginForm("Salida", "Documento", ajaxOptions))
+    {
+        <div class="row">
+            <div class="col-md-3 form-group">
+                @Html.LabelFor(m => m.idDocumento)
+                @Html.TextBoxFor(m => m.idDocumento, new{@id = "txt-idDocumentoHidden",@class="form-control soloLectura",@style="display: none", @placeholder = "Numero de Oficio", @data_id=""})
+                <input type="text" id="txt-noOficio" data-id="" class="form-control soloLectura">
+            </div>
+            <div class="col-md-3 form-group">
+
+                @Html.LabelFor(m => m.idDestinatario)
+                @Html.DropDownListFor(m => m.idDestinatario,
+                    (Model.ddlDestinatarios), new
+                    {
+                        @class = "form-control selectpicker show-menu-arrow",
+                        @title = "Seleccione",
+                        @multiple = "multiple",
+                        @data_max_options = "1"
+                    })
+            </div>
+            <div class="col-md-3 form-group">
+                <label></label>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" id="checkbox-devolucion"/>
+                        Devolucion
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-info">
+                    <div class="panel-heading">Documentos</div>
+                    <div class="panel-body">
+                        <table id="table-documents" class="table table-striped table-bordered table-hover">
+                            <thead>
+                            <tr>
+                                <th>No. de Oficio</th>
+                                <th>Asunto</th>
+                                <th>Fecha Del Documento</th>
+                                <th>Regional</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach (var documento in @Model.documentos)
+                            {
+                                <tr>
+                                    <td class="codigoDocumento">@documento.codigo</td>
+                                    <td>@documento.asunto</td>
+                                    <td>@documento.fechaCreacionUsuario</td>
+                                    <td>@documento.departamento.descripcion</td>
+                                    <td><button type="button" data-id="@documento.Id" data-cod="@documento.codigo" class="btn btn-primary btn-addDocumentoSalida"><i class="glyphicon glyphicon-plus"></i></button></td>
+                                </tr>
+                            }
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="panel-footer"><button class="btn btn-info " id="btn-refrescar">Refrescar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2 col-md-offset-10">
+                <button type="submit" class="btn btn-primary btn-block btn-lg">Registrar</button>
+            </div>
+        </div>
+    }
+</div>
+<script src="~/App_Script/Documento/JqueryRegistrarSalida.js"></script>

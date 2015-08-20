@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewBag.Title = "Datos del Documento";
+}
+
+<div class="row">
+    <div class="col-md-4 form-group">
+        <label for="txt-noOficio">No. de Oficio</label>
+        <input type="text" id="txt-noOficio" class="form-control soloLectura" placeholder="Numero de oficio">           
+    </div>                                                                       
+    <div class="col-md-4 form-group">                                            
+        <label for="txt-fechaDocumento">Fecha del Documento</label>                    
+        <input type="text" id="txt-fechaDocumento" class="form-control soloLectura" placeholder="Fecha del Documento">          
+    </div>                                                                       
+    <div class="col-md-4 form-group">                                            
+        <label for="txt-fechaRegistrado">Fecha Registrado en el Sistema</label>                
+        <input type="text" id="txt-fechaRegistrado" class="form-control soloLectura" placeholder="Fecha de Registro del Documento">        
+    </div>                                                                       
+</div>                                                                                                                                                      
+<div class="row">                                                                
+    <div class="col-md-4 form-group">                                            
+        <label for="txt-regional">Regional</label>              
+        <input type="text" id="txt-regional" class="form-control soloLectura" placeholder="Regional del Documento">
+    </div>
+    <div class="col-md-4 form-group">
+        <label for="txt-estadoActual">Estador Actual</label>
+        <input type="text" id="txt-estadoActual" class="form-control soloLectura" placeholder="Estado Actual del Documento">
+    </div>
+</div>
+<div class="row">                                                                
+    <div class="col-md-12 form-group">                                           
+        <label for="txt-asunto">Asunto</label>                                   
+        <input type="text" id="txt-asunto" class="form-control soloLectura" placeholder="Asunto">                 
+    </div>                                                                       
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-info">
+            <div class="panel-heading">Movimientos</div>
+            <div class="panel-body">
+                <table id="table-documents" class="table table-striped table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th>Remitente</th>
+                        <th>Destinatario</th>
+                        <th>Movimiento</th>
+                        <th>Fecha del Movimiento</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="panel-footer"><button class="btn btn-info " id="btn-refrescar">Refrescar</button>
+            </div>
+        </div>
+    </div>
+</div>
+

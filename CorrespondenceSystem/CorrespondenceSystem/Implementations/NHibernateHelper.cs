@@ -38,12 +38,13 @@ namespace MvcGCP.NHibernateHelpers
                 .Database(MsSqlConfiguration.MsSql2008
                     .ConnectionString(_connectionString)
                     .ShowSql())
-                .ExposeConfiguration(c => new SchemaUpdate(c).Execute(false, true))
+                .ExposeConfiguration(c => new SchemaUpdate(c).Execute(true, true))
                 .Mappings(m => m.FluentMappings.AddFromAssembly(Assembly.GetExecutingAssembly()))
                 .BuildConfiguration();
 
             _sessionFactory = configuration.BuildSessionFactory();
             return _sessionFactory;
+
         }
     }
 }

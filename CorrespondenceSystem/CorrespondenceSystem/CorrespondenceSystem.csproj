@@ -19,6 +19,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -68,7 +69,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="NHibernate, Version=4.0.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
-      <HintPath>..\packages\NHibernate.4.0.3.4000\lib\net40\NHibernate.dll</HintPath>
+      <HintPath>..\packages\NHibernate.4.0.4.4000\lib\net40\NHibernate.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Result, Version=1.0.5239.28577, Culture=neutral, processorArchitecture=MSIL">
@@ -327,7 +328,7 @@
     <Compile Include="MappingClasses\TipoMovimientoMap.cs" />
     <Compile Include="MappingClasses\TipoUsuarioMap.cs" />
     <Compile Include="MappingClasses\UsuarioMap.cs" />
-    <Compile Include="NHibernateHelper\NHibernateHelper.cs" />
+    <Compile Include="Implementations\NHibernateHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\RepositoryBase.cs" />
     <Compile Include="Services\NhUnitOfWork.cs" />
@@ -349,12 +350,13 @@
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Shared\_LoginLayout.cshtml" />
     <Content Include="Views\Documento\DocumentoRegistrarNuevo.cshtml" />
-    <Content Include="Views\Documento\DocumentoVerTodos.cshtml" />
+    <Content Include="DocumentoVerTodos.cshtml" />
     <Content Include="Views\Documento\DocumentoRegistrarSalida.cshtml" />
-    <Content Include="Views\Documento\DocumentoRegistrarEntrada.cshtml" />
-    <Content Include="Views\Documento\DocumentoRegistrarEntradaUser.cshtml" />
     <Content Include="Views\Movimiento\MovimientoVerHistorialTodos.cshtml" />
     <Content Include="Views\Documento\DocumentoVerDocumento.cshtml" />
+    <Content Include="Views\Documento\DocumentoVerTodos.cshtml" />
+    <Content Include="Views\Documento\DocumentoRegistrarEntradaUser.cshtml" />
+    <Content Include="Views\Documento\DocumentoRegistrarEntrada.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -366,6 +368,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="NHibernateHelper\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
