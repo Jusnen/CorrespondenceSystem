@@ -1,9 +1,8 @@
 ﻿@using SistemaCorrespondencia.MVC.DomainClasses
-
 @model SistemaCorrespondencia.MVC.ViewModel.Documento.DocumentoNuevoViewModel
 @{
+    Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "Registrar Nuevo Documento";
-
 
     AjaxOptions ajaxOptions = new AjaxOptions
     {
@@ -14,14 +13,6 @@
     };
 
 }
-@*Esta era la forma en que lo re-implemente*@ 
-    
-    @*@using (Ajax.BeginForm("Nuevo", "Documento", new AjaxOptions
-    {
-        OnBegin = "onBeginFunction",
-        OnSuccess = "OnSuccessFunction",
-        OnFailure = "OnFailureFunction"
-    }))*@
 
 
 
@@ -98,11 +89,14 @@
         <div class="row">
             <div class="col-md-2 col-md-offset-10">
                 <button type="submit" class="btn btn-primary btn-block btn-lg">Registrar</button>
+
             </div>
         </div>
 
 
   }
 </div>
+
+
 
 <script src="~/App_Script/Documento/JqueryRegistrarNuevo.js"></script>

@@ -1,9 +1,12 @@
 ﻿
-$(document).on("click", "#hideAlert", function() {
+//$(document).on("click", "#hideAlert", function() {
 
-    $("#AlertSuccess").hide();
+//    $("#AlertSuccess").hide();
 
-});
+//});
+
+
+//$(".fecha").datepicker();
 
 
 function onBeginFunction(parameters)

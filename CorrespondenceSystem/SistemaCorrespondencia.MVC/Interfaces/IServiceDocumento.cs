@@ -11,6 +11,9 @@ namespace SistemaCorrespondencia.MVC.Interfaces
         List<Documento> GetAllDocumentosByDepartamento(int idDepartamento);
         List<Documento> GetAllDocumentosByDepartamento(int idDepartamento, DateTime fechaInicio, DateTime fechaFinal);
         List<Documento> GetAllDocumentosByTipoDepartamento(int idTipoDepartamento);
+
+        List<TipoEntrada> GetAllTipoEntrada();
+
         Documento GetDocumentoByCodigo(string codigo);
         Documento GetDocumentoById(int id);
         void InsertDocumento(Documento documento);

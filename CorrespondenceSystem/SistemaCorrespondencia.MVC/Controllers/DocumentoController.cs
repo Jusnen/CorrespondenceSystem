@@ -132,17 +132,23 @@ namespace SistemaCorrespondencia.MVC.Controllers
         [HttpGet]
         public ActionResult Entrada()
         {
-            var listaDocumento = _serviceDocumento.GetAllDocumentosByTipoDepartamento(2);
+            var ListaEntrada = _serviceDocumento.GetAllTipoEntrada();
 
-            var listViewModel = listaDocumento.Select(documento => new DocumentoViewModel
-            {
-                asunto = documento.asunto,
-                codigo = documento.codigo,
-                fechaCreacionUsuario = documento.fechaCreacionUsuario
-            }).ToList();
+            //foreach (var lista in listaDocumento )
+            //{
+
+            //}
 
 
-            return View("DocumentoRegistrarEntrada", listViewModel);
+            //var listViewModel = listaDocumento.Select(documento => new DocumentoViewModel
+            //{
+            //    asunto = documento.asunto,
+            //    codigo = documento.codigo,
+            //    fechaCreacionUsuario = documento.fechaCreacionUsuario
+            //}).ToList();
+
+
+            return View("DocumentoRegistrarEntrada", ListaEntrada);
         }
 
         #endregion

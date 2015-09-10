@@ -9,10 +9,15 @@ namespace SistemaCorrespondencia.MVC.Services
     public class ServiceDocumento : IServiceDocumento
     {
         private readonly IRepository<Documento, int> _repository;
+        private readonly IRepository<TipoEntrada, int> _TipoEntrada;
 
-        public ServiceDocumento(IRepository<Documento, int> documentoRepository )
+        public ServiceDocumento(IRepository<Documento, int> documentoRepository,
+                                IRepository<TipoEntrada, int> TipoEntradaRepository
+
+            )
         {
             _repository = documentoRepository;
+            _TipoEntrada = TipoEntradaRepository;
 
             //_sessionFactory = nHibernateHelper.CreateSessionFactory();
             //_session = _sessionFactory.OpenSession();
@@ -72,6 +77,13 @@ namespace SistemaCorrespondencia.MVC.Services
         public void UpdateStatus(Documento documento)
         {
             throw new NotImplementedException();
+        }
+
+        public List<TipoEntrada> GetAllTipoEntrada()
+        {
+
+            var ListaEntrada = _TipoEntrada.GetAll().ToList();
+            return ListaEntrada;
         }
     }
 }
